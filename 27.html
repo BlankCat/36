@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>java 36</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+			<div id="wrapper" class="fade-in">
+					<div id="intro">
+						<h1>This is<br />
+						java </h1>
+						<p>article of java  <a href="http://blankcat.github.io/">@BlankCat</a> for <a href="http://blankcat.github.io/">Home page</a><br />
+						address:<a href="http://blankcat.github.io/">http://blankcat.github.io/</a>.</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+					<header id="header">
+						<a href="index.html" class="logo">BlankCat</a>
+					</header>
+						<!-- Nav -->
+					<nav id="nav" style="overflow-x: scroll;">
+						<ul class="links">
+							<li class="active"><a href="index.html">01</a></li>
+							<li><a href="02.html">02</a></li>
+							<li><a href="03.html">03</a></li>
+							<li><a href="04.html">04</a></li>
+							<li><a href="05.html">05</a></li>
+							<li><a href="06.html">06</a></li>
+							<li><a href="07.html">07</a></li>
+							<li><a href="08.html">08</a></li>
+							<li><a href="09.html">09</a></li>
+							<li><a href="10.html">10</a></li>
+							<li><a href="11.html">11</a></li>
+							<li><a href="12.html">12</li>
+							<li><a href="13.html">13</a></li>
+							<li><a href="14.html">14</a></li>
+							<li><a href="15.html">15</a></li>
+							<li><a href="16.html">16</a></li>
+							<li><a href="17.html">17</a></li>
+							<li><a href="18.html">18</a></li>
+							<li><a href="19.html">19</a></li>
+							<li><a href="20.html">20</a></li>
+							<li><a href="21.html">21</a></li>
+							<li><a href="22.html">22</a></li>
+							<li><a href="23.html">23</li>
+							<li><a href="24.html">24</a></li>
+							<li><a href="25.html">25</a></li>
+							<li><a href="26.html">26</a></li>
+							<li><a href="27.html">27</a></li>
+							<li><a href="28.html">28</a></li>
+							<li><a href="29.html">29</a></li>
+							<li><a href="30.html">30</a></li>
+							<li><a href="31.html">31</a></li>
+							<li><a href="32.html">32</a></li>
+							<li><a href="33.html">33</a></li>
+							<li><a href="34.html">34</a></li>
+							<li><a href="35.html">35</a></li>
+							<li><a href="36.html">36</a></li>
+							<li><a href="37.html">37</a></li>
+							<li><a href="38.html">38</a></li>
+							<li><a href="39.html">39</a></li>
+							<li><a href="40.html">40</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://github.com/BlankCat" class="icon fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+					<div id="main">
+							<article class="post featured">
+								<p>27-java常见的垃圾收集器 什么办法打开GC日志？ 额外添加那些选项</p>
+<p>JVM提供的收集器较多，特征不一，适用于不同的业务场景： Serial收集器： 串行运行；作用于新生代； 复制算法；响应速度优先； 适用于单CPU环境下的client模式。 ParNew收集器： [并行收集器，Serial的多线程版本，使用多条线程进行垃圾回收，其他特性与Serial一致] 并行运行；作用于新生代； 复制算法；响应速度优先； 多CPU环境Server模式下与CMS配合使用。 Parallel Scavenge 【并行清除】收集器： 并行运行；作用于新生代； 复制算法；吞吐量优先； 适用于后台运算而不需要太多交互的场景。</p>
+<p>Serial Old收集器： 串行运行；作用于老年代； 标记-整理算法；响应速度优先； 单CPU环境下的Client模式。 Parallel Old收集器： 并行运行；作用于老年代；标记-整理算法；吞吐量优先；适用于后台运算而不需要太多交互的场景。 CMS收集器： 并发运行；作用于老年代； 标记-清除算法；响应速度优先； 适用于互联网或B/S业务。</p>
+<p>G1收集器： 并发运行； 可作用于新生代或老年代； 标记-整理算法+复制算法； 响应速度优先； 面向服务端应用。</p>
+<p>老师有个问题不太明白， full gc、 major gc、 minor gc都会stop_the_word吗？还是说是跟具体的垃圾收集算法有关系？</p>
+<p>Minor GC 清理年轻代 major gc 清理老年代 full gc 清理整个堆空间—包括年轻代和老年代。</p>
+<p>JDK8的话，互联网B/S项目， 追求高响应和底停顿，请问是用CMS好还是G1好呢，或者有其他更好的选择 回复 没有绝对，我建议综合考虑： G1理论上比cms更容易调，但你更熟悉哪个？ 实际用cms的挺多，也许更多经验； 如果都不熟，先看看g1能否达到你的延迟、吞吐目标； 还有基础配置，如堆大小，比较大，比如16g以上，建议优先g1</p>
+<p>老师，能整理一份每个jdk 版本对应默认的GC是什么吗？ 为什么会变更，优势在哪里，谢谢！ 回复 client vm mode（win 32）一直是Seiral GC，servermode下， 9以后改为了G1，以前是Parrallel Gc</p>
+<p></p>
+<p>直接分配到老年代的对象在年轻代有空间了会移动回来吗？ 回复 不会</p>
+<p>Oracle的jvm的CMSGC，本身能够解决内存碎片化的问题吗？ 回复 我理解是目前实现不能完全避免，cms又不再发展了</p>
+<p>ZGC如此强大，非常期待！</p>
+<p>咨询大师，Java未来有没有计划让手动内存回收辅助自动内存回收以提高回收效率？ 既默认情况下自动内存回收完全没问题，但在极致情况下允极客开发者介入甚至完全接管内存回收过程（类似与C和C++）以提高程序执行效率？ 回复 现在有一些手段影响gc，或者用直接内存再显式释放， 更近一步我不知道了</p>
+<p>当Survivor满了而且Survivor中的对象还没有达到进去老年代的年龄后怎么处理， 是会增加Survivor的大小吗还是直接将Survivor中的对象放到老年代呢 回复 发生promotion，放到老年代； maxtenuringthreshold 是个上限值</p>
+<p>用过-XX:+PrintGCDetails，打印比较详细 回复 这个jdk9已经deprecated了哦</p>
+
+								
+								
+								
+							</article>
+
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

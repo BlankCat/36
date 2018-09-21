@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>java 36</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+			<div id="wrapper" class="fade-in">
+					<div id="intro">
+						<h1>This is<br />
+						java </h1>
+						<p>article of java  <a href="http://blankcat.github.io/">@BlankCat</a> for <a href="http://blankcat.github.io/">Home page</a><br />
+						address:<a href="http://blankcat.github.io/">http://blankcat.github.io/</a>.</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+					<header id="header">
+						<a href="index.html" class="logo">BlankCat</a>
+					</header>
+						<!-- Nav -->
+					<nav id="nav" style="overflow-x: scroll;">
+						<ul class="links">
+							<li class="active"><a href="index.html">01</a></li>
+							<li><a href="02.html">02</a></li>
+							<li><a href="03.html">03</a></li>
+							<li><a href="04.html">04</a></li>
+							<li><a href="05.html">05</a></li>
+							<li><a href="06.html">06</a></li>
+							<li><a href="07.html">07</a></li>
+							<li><a href="08.html">08</a></li>
+							<li><a href="09.html">09</a></li>
+							<li><a href="10.html">10</a></li>
+							<li><a href="11.html">11</a></li>
+							<li><a href="12.html">12</li>
+							<li><a href="13.html">13</a></li>
+							<li><a href="14.html">14</a></li>
+							<li><a href="15.html">15</a></li>
+							<li><a href="16.html">16</a></li>
+							<li><a href="17.html">17</a></li>
+							<li><a href="18.html">18</a></li>
+							<li><a href="19.html">19</a></li>
+							<li><a href="20.html">20</a></li>
+							<li><a href="21.html">21</a></li>
+							<li><a href="22.html">22</a></li>
+							<li><a href="23.html">23</li>
+							<li><a href="24.html">24</a></li>
+							<li><a href="25.html">25</a></li>
+							<li><a href="26.html">26</a></li>
+							<li><a href="27.html">27</a></li>
+							<li><a href="28.html">28</a></li>
+							<li><a href="29.html">29</a></li>
+							<li><a href="30.html">30</a></li>
+							<li><a href="31.html">31</a></li>
+							<li><a href="32.html">32</a></li>
+							<li><a href="33.html">33</a></li>
+							<li><a href="34.html">34</a></li>
+							<li><a href="35.html">35</a></li>
+							<li><a href="36.html">36</a></li>
+							<li><a href="37.html">37</a></li>
+							<li><a href="38.html">38</a></li>
+							<li><a href="39.html">39</a></li>
+							<li><a href="40.html">40</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://github.com/BlankCat" class="icon fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+					<div id="main">
+							<article class="post featured">
+								<p>28-gc调优思路 定位full gc的原因？有那些方式？</p>
+<p>FullGc可通过Gc日志 或者添加fullgc前后堆dump 查看引起fullgc原因 CPU飙升可以看看jstack 回复 不错思路，如果堆太大dump不现实呢； 除了gc日志，还有没有其他工具？</p>
+<p>-XX:+PrintGCDetails -XX:+PrintGCDateStamps 这两个参数可用于CMS GC下吗？还是只能用于G1 GC? 回复 当然可以，无关的；建议随手试验一下， 顺道熟悉各种gc怎么启用</p>
+<p>1,首先通过printgcdetail 查看fullgc频率以及时长 2,通过dump 查看内存中哪些对象多，这些可能是引起fullgc的原因，看是否能优化 3,如果堆大或者是生产环境，可以开起jmc 飞行一段时间，查看这期间的相关数据来订位问题 回复 不错</p>
+<p>这个问题真的很难，如果没有实际的生产经验， 真的很难回答，麻烦老师能给提供一些参考方案吗？谢谢您～</p>
+<p>杨老师能不能具体讲讲cms， 这个垃圾回收似乎用的还挺多的， 昨天上官网介绍的也不是很详细能不能说说原理以及参数优化的东西，感谢了</p>
+<p>如果dump堆太大. 我觉得可以先通过jmap -heap看下是哪个区占用特别多. 再看下对内存占用前20到30的大对象. 然后结合jstat gccuase 查看下引起Gc原因 . 目前想到这些思路请问还有更好的工具？ jconsole jdb远程连接查看占用？</p>
+<p>请问Remembered Set和cardtable关系是怎么样的？ 他们之间是如何协作一起完成g1 gc的？ 回复 我理解card table是remembered set的一种实现</p>
+<p>jmap指令加不加live，分析是否是内存泄漏或者是请求的内存处理不过来等原因。 回复 嗯，不过，加live会触发full gc吧</p>
+<p>当垃圾回收时，收集线程会对栈上的内存进行扫描， 看看那些位置上存储了Reference类型。 如果发现了某个位置上存储的是Reference类型， 就意味着这个引用所指向的对象在这一次垃圾回收过程中不能够回收</p>
+<p>OopMap记录了栈上本地变量到堆上对象的引用关系， 这些引用指向的对象不能够回收， 并且可以作为根节点来进行可达性分析， 查找出不能够回收的对象。</p>
+<p>一个线程意味着一个栈， 一个栈由多个栈帧组成， 一个栈帧对应着一个方法， 一个方法里面可能有多个安全点。</p>
+<p>gc 发生时，程序首先运行到最近的一个安全点停下来， 然后更新自己的 OopMap ， 记下栈上哪些位置代表着引用。 枚举根节点时，递归遍历每个栈帧的 OopMap ， 通过栈中记录的被引用对象的内存地址， 即可找到这些对象（GC Roots）。 所以说一个方法可能有多个OopMap， 每一个的记录的也只仅限于自己的那一段代码。</p>
+<p>RememberedSet记录的是新生代的对象被老年代引用的关系。 所以“新生代的 GC Roots” + “ RememberedSet 存储的内容”，才是新生代收集时真正的 GC Roots 。</p>
+<p>G1中每个Region都有一个与之对应的RememberedSet ， 在各个 Region 上记录自家的对象被外面对象引用的情况。 当进行内存回收时，在GC根节点的枚举范围中加入RememberedSet 即可保证不对全堆扫描也不会有遗漏。</p>
+
+								
+								
+								
+							</article>
+
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

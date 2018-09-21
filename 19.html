@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>java 36</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    </head>
+    <body class="is-preload">
+            <div id="wrapper" class="fade-in">
+                    <div id="intro">
+                        <h1>This is<br />
+                        java </h1>
+                        <p>article of java  <a href="http://blankcat.github.io/">@BlankCat</a> for <a href="http://blankcat.github.io/">Home page</a><br />
+                        address:<a href="http://blankcat.github.io/">http://blankcat.github.io/</a>.</p>
+                        <ul class="actions">
+                            <li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+                        </ul>
+                    </div>
+                    <header id="header">
+                        <a href="index.html" class="logo">BlankCat</a>
+                    </header>
+                        <!-- Nav -->
+                    <nav id="nav" style="overflow-x: scroll;">
+                        <ul class="links">
+                            <li class="active"><a href="index.html">01</a></li>
+                            <li><a href="02.html">02</a></li>
+                            <li><a href="03.html">03</a></li>
+                            <li><a href="04.html">04</a></li>
+                            <li><a href="05.html">05</a></li>
+                            <li><a href="06.html">06</a></li>
+                            <li><a href="07.html">07</a></li>
+                            <li><a href="08.html">08</a></li>
+                            <li><a href="09.html">09</a></li>
+                            <li><a href="10.html">10</a></li>
+                            <li><a href="11.html">11</a></li>
+                            <li><a href="12.html">12</li>
+                            <li><a href="13.html">13</a></li>
+                            <li><a href="14.html">14</a></li>
+                            <li><a href="15.html">15</a></li>
+                            <li><a href="16.html">16</a></li>
+                            <li><a href="17.html">17</a></li>
+                            <li><a href="18.html">18</a></li>
+                            <li><a href="19.html">19</a></li>
+                            <li><a href="20.html">20</a></li>
+                            <li><a href="21.html">21</a></li>
+                            <li><a href="22.html">22</a></li>
+                            <li><a href="23.html">23</li>
+                            <li><a href="24.html">24</a></li>
+                            <li><a href="25.html">25</a></li>
+                            <li><a href="26.html">26</a></li>
+                            <li><a href="27.html">27</a></li>
+                            <li><a href="28.html">28</a></li>
+                            <li><a href="29.html">29</a></li>
+                            <li><a href="30.html">30</a></li>
+                            <li><a href="31.html">31</a></li>
+                            <li><a href="32.html">32</a></li>
+                            <li><a href="33.html">33</a></li>
+                            <li><a href="34.html">34</a></li>
+                            <li><a href="35.html">35</a></li>
+                            <li><a href="36.html">36</a></li>
+                            <li><a href="37.html">37</a></li>
+                            <li><a href="38.html">38</a></li>
+                            <li><a href="39.html">39</a></li>
+                            <li><a href="40.html">40</a></li>
+                        </ul>
+                        <ul class="icons">
+                            <li><a href="https://github.com/BlankCat" class="icon fa-github"><span class="label">GitHub</span></a></li>
+                        </ul>
+                    </nav>
+                    <div id="main">
+                            <article class="post featured">
+                                <p>19-java并发包 java并发包提供那些工具类 CountDownLatch 的同步结构解决实际问题 使用场景和心得</p>
+<p>做android的，一个页面有A,B,C三个网络请求， 其中请求C需要请求A和请求B的返回数据作为参数， 用过CountdownLatch解决。</p>
+<p>1 什么是同步？ 2 什么是异步？ 3 什么是阻塞？ 4 什么是非阻塞？ 5 什么是同步阻塞？ 6 什么是同步非阻塞？ 7 什么是异步阻塞？ 8 什么是异步非阻塞？</p>
+<p>同步/异步 主要针对的是触发io是一直等待，还是立即返回， 等待就是同步，立即返回等待接口回掉属于异步操作 阻塞/非阻塞 主要针对读写文件io流 同步非阻塞：(Java NIO) 多路复用，处理多个请求，请求处理的顺序是同步的， 但是处理结果是以接口回掉的方式，是非阻塞的请求会立即响应 异步阻塞：应用发起一个IO操作以后，不等待内核IO操作的完成，等内核完成IO操作以后会通知应用程序 为什么说是阻塞的呢？因为此时是通过select系统调用来完成的，而select函数本身的实现方式是阻塞的</p>
+<p></p>
+<p>以前使用coutdownlatch进行并发异常的模拟，来修改bug，具体是在发生异常的错误堆栈上进行await， 在某些条件处或触发点进行coutdown，来尽可能模拟触发异常时的场景， 很多可以必现，修改之后没有问题，才算解决一个并发异常</p>
+<p>模拟高并发 import java.util.concurrent.CountDownLatch; import java.util.concurrent.ExecutorService; import java.util.concurrent.Executors; import java.util.concurrent.atomic.AtomicInteger; public class IncrTest { public static void concurrenceTest() { /** * 模拟高并发情况代码 */ final AtomicInteger atomicInteger = new AtomicInteger(0); final CountDownLatch countDownLatch = new CountDownLatch(1000); // 相当于计数器，当所有都准备好了，再一起执行，模仿多并发，保证并发量 final CountDownLatch countDownLatch2 = new CountDownLatch(1000); // 保证所有线程执行完了再打印atomicInteger的值 ExecutorService executorService = Executors.newFixedThreadPool(10); try { for (int i = 0; i &lt; 1000; i++) { executorService.submit(new Runnable() { <span class="citation" data-cites="Override">@Override</span> public void run() { try { countDownLatch.await(); //一直阻塞当前线程，直到计时器的值为0,保证同时并发 } catch (InterruptedException e) { e.printStackTrace(); } //每个线程增加1000次，每次加1 for (int j = 0; j &lt; 1000; j++) { atomicInteger.incrementAndGet(); } countDownLatch2.countDown(); } }); countDownLatch.countDown(); }</p>
+<pre><code>        countDownLatch2.await();// 保证所有线程执行完
+        System.out.println(atomicInteger);
+        executorService.shutdown();
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+}
+
+public static void main(String[] args) throws InterruptedException {
+    concurrenceTest();
+}</code></pre>
+<p>}</p>
+<p>package test; public class Service {</p>
+<pre><code>public void testMethod() {
+    try {
+        System.out.println(Thread.currentThread().getName() + &quot; begin timer &quot; + System.currentTimeMillis());
+        Thread.sleep((long) (Math.random()*10000));//模拟每个跑步选手跑完100米所需的时间
+        System.out.println(Thread.currentThread().getName() + &quot; end timer &quot; + System.currentTimeMillis());
+    } catch (InterruptedException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+}</code></pre>
+<p>} package test; import java.util.concurrent.CountDownLatch; public class MyThread extends Thread { private Service service; private final CountDownLatch begin; private final CountDownLatch end;</p>
+<pre><code>public MyThread(Service service, CountDownLatch begin, CountDownLatch end){
+    this.service = service;
+    this.begin  = begin;
+    this.end  = end;
+}
+
+public void run(){
+    try {
+        begin.await();//每个参赛选手都站在自己的跑道上，做好了比赛的准备，正在等裁判鸣枪开始比赛
+        service.testMethod();//听到鸣枪后比赛开始了
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }finally{
+        end.countDown();//其中的一个参赛选手已经跑完了
+    }
+    
+}</code></pre>
+<p>} package test; import java.util.concurrent.CountDownLatch; public class CountDownDemo {</p>
+<pre><code>public static void main(String[] args) {
+    try {
+        Service service = new Service();
+        CountDownLatch begin = new CountDownLatch(1);//裁判员鸣枪信号
+        CountDownLatch end = new CountDownLatch(10);//10名参赛选手结束信号
+        MyThread[] threadArray = new MyThread[10];          
+        for(int i = 0 ; i &lt; 10; i++){
+            threadArray[i] = new MyThread(service,begin,end);
+            threadArray[i].setName((i + 1) + &quot; 号选手 &quot;);
+            threadArray[i].start();
+        }
+        System.out.println(&quot;在等待裁判员鸣枪  &quot; + System.currentTimeMillis());
+        long t1 = System.currentTimeMillis();//记录比赛的开始时间
+        begin.countDown();//裁判员鸣枪了
+        end.await();//等待10个参赛选手都跑完100米
+        long t2 = System.currentTimeMillis();//记录比赛的结束时间
+        System.out.println(&quot;所有参赛选手都完成了100米赛跑，赛跑总耗时是  &quot; + (t2-t1));
+    } catch (InterruptedException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+    
+}</code></pre>
+<p>}</p>
+<p>对于Java 并发包提供了哪些并发工具类，我是这么理解的： 1. 执行任务，需要对应的执行框架（Executors）； 2. 多个任务被同时执行时，需要协调，这就需要Lock、闭锁、栅栏、信号量、阻塞队列； 3. Java程序中充满了对象，在并发场景中当然避免不了遇到同种类型的N个对象， 而对象需要被存储，这需要高效的线程安全的容器类</p>
+<p>ArrayBlockingQueue使用了两个condition来分别控制put和take的阻塞与唤醒， 但是我在想好像只用一个condition也可以，因为put和take只会有一个是处于阻塞等待状态。 所以设计成两个condition 的原因是什么呢？只是为了提高可读性么？</p>
+<p>CountDownLatch最近还真用上了。我的需求是每个对象一个线程， 分别在每个线程里计算各自的数据，最终等到所有线程计算完毕， 我还需要将每个有共通的对象进行合并，所以用它很合适。 回复 合适的场景</p>
+<p>在写爬虫时，使用过 Semaphore ， 来控制最多爬同一个域名下的 url 数量。</p>
+<p>调用notify()/notifyAll()方法后线程是处于阻塞状态吧，因为线程还没获取到锁。 回复 是说调用notify的那个线程的状态吗？ 不是的，这里有很多方面： 阻塞一般发生在进入同步块儿时； notify并不会让出当前的monitor； 可以用wait释放锁，但是进入waiting状态。</p>
+<p>授人以渔比提供答案更重要，最好不要你怀疑我这里的每个结论，自己写代码去玩玩</p>
+<p>需要深入多次数阅读理解</p>
+<p>老师为什么我用ConcurrentHashMap执行remove操作的时候cpu总是跳得很高， hashmap就还好没那么夸张。。现在为了线程安全还是用ConcurrentHashMap， 但执行remove操作的线程一多经常就卡死了。</p>
+<p>Android中多线程上传多张图片到阿里云， 将每个线程返回的图片url地址， 组合成一个数组传给服务端</p>
+<p>“提供了比 synchronized 更加高级的各种同步结构， 包括 CountDownLatch、CyclicBarrier、Sempahore 等， 可以实现更加丰富的多线程操作， 比如利用 Semaphore 作为资源控制器 ，限制同时进行工作的线程数量。”， 发现一处拼写错误，在这一段中，Sempahore 拼写错了， 应该是 Semaphore。</p>
+
+                                
+                            </article>
+
+                    </div>
+            </div>
+
+        <!-- Scripts -->
+            <script src="assets/js/jquery.min.js"></script>
+            <script src="assets/js/jquery.scrollex.min.js"></script>
+            <script src="assets/js/jquery.scrolly.min.js"></script>
+            <script src="assets/js/browser.min.js"></script>
+            <script src="assets/js/breakpoints.min.js"></script>
+            <script src="assets/js/util.js"></script>
+            <script src="assets/js/main.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>java 36</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+			<div id="wrapper" class="fade-in">
+					<div id="intro">
+						<h1>This is<br />
+						java </h1>
+						<p>article of java  <a href="http://blankcat.github.io/">@BlankCat</a> for <a href="http://blankcat.github.io/">Home page</a><br />
+						address:<a href="http://blankcat.github.io/">http://blankcat.github.io/</a>.</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+					<header id="header">
+						<a href="index.html" class="logo">BlankCat</a>
+					</header>
+						<!-- Nav -->
+					<nav id="nav" style="overflow-x: scroll;">
+						<ul class="links">
+							<li class="active"><a href="index.html">01</a></li>
+							<li><a href="02.html">02</a></li>
+							<li><a href="03.html">03</a></li>
+							<li><a href="04.html">04</a></li>
+							<li><a href="05.html">05</a></li>
+							<li><a href="06.html">06</a></li>
+							<li><a href="07.html">07</a></li>
+							<li><a href="08.html">08</a></li>
+							<li><a href="09.html">09</a></li>
+							<li><a href="10.html">10</a></li>
+							<li><a href="11.html">11</a></li>
+							<li><a href="12.html">12</li>
+							<li><a href="13.html">13</a></li>
+							<li><a href="14.html">14</a></li>
+							<li><a href="15.html">15</a></li>
+							<li><a href="16.html">16</a></li>
+							<li><a href="17.html">17</a></li>
+							<li><a href="18.html">18</a></li>
+							<li><a href="19.html">19</a></li>
+							<li><a href="20.html">20</a></li>
+							<li><a href="21.html">21</a></li>
+							<li><a href="22.html">22</a></li>
+							<li><a href="23.html">23</li>
+							<li><a href="24.html">24</a></li>
+							<li><a href="25.html">25</a></li>
+							<li><a href="26.html">26</a></li>
+							<li><a href="27.html">27</a></li>
+							<li><a href="28.html">28</a></li>
+							<li><a href="29.html">29</a></li>
+							<li><a href="30.html">30</a></li>
+							<li><a href="31.html">31</a></li>
+							<li><a href="32.html">32</a></li>
+							<li><a href="33.html">33</a></li>
+							<li><a href="34.html">34</a></li>
+							<li><a href="35.html">35</a></li>
+							<li><a href="36.html">36</a></li>
+							<li><a href="37.html">37</a></li>
+							<li><a href="38.html">38</a></li>
+							<li><a href="39.html">39</a></li>
+							<li><a href="40.html">40</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://github.com/BlankCat" class="icon fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+					<div id="main">
+							<article class="post featured">
+								<p>18-java死锁 什么情况下可以产生死锁 如何定位，修复？ 有时候并不是阻塞导致死锁，只是某个线程进入死循环导致其他线程一直等待 如何诊断？</p>
+<p>线程饥饿 线程公平性质 同步块非公平锁 如果一个线程因为CPU时间全部被其他线程抢走而得不到CPU运行时间，这种状态被称之为“饥饿”。 而该线程被“饥饿致死”正是因为它得不到CPU运行时间的机会。 解决饥饿的方案被称之为“公平性” – 即所有线程均能公平地获得运行机会。 1. Java中导致饥饿的原因： 高优先级线程吞噬所有的低优先级线程的CPU时间。 线程被永久堵塞在一个等待进入同步块的状态。 线程在等待一个本身也处于永久等待完成的对象(比如调用这个对象的wait方法)。 2. 在Java中实现公平性方案，需要: 使用锁，而不是同步块。 公平锁。 注意性能方面。</p>
+<ol type="1">
+<li>死锁的另一个好朋友就是饥饿。死锁和饥饿都是线程活跃性问题。 实践中死锁可以使用 jvm 自带的工具进行排查。</li>
+<li>课后题提出的死循环死锁可以认为是自旋锁死锁的一种，其他线程因为等待不到具体的信号提示。导致线程一直饥饿。 这种情况下可以查看线程 cpu 使用情况，排查出使用 cpu 时间片最高的线程，再打出该线程的堆栈信息，排查代码。</li>
+<li>基于互斥量的锁如果发生死锁往往 cpu 使用率较低，实践中也可以从这一方面进行排查。 回复 很好的总结</li>
+</ol>
+<p>当是死循环引起的其他线程阻塞，会导致cpu飙升，可以先看下cpu的使用率。 2018-06-16  作者回复 对，比如Linux上， 可以使用top命令配合grep Java之类， 找到忙的pid； 然后，转换成16进制， 就是jstack输出中的格式； 再定位代码</p>
+<p>回答老师的问题 可以通过linux下top命令查看cpu使用率较高的java进程， 进而用top -Hp ➕pid查看该java进程下cpu使用率较高的线程。 再用jstack命令查看线程具体调用情况，排查问题。 回复 非常不错</p>
+<p>任务线程规范命名，详细记录逻辑运行日志。jstack查看线程状态。 回复 不错</p>
+<p>看了下jconsole检测死锁功能的源码， 果然也是用ThreadMXBean获取死锁线程并分组， 然后打印相关线程信息的。</p>
+<p>初学nio的时候确实动不动就发生死锁。 现在好像也没有特别好的教程，都是一些java.io的教程。 很多教程跟不上技术的迭代。也可能是因为直接io编程在项目实践中偏少。 另外，这个小程序的图片不能放大看， 不知道是微信的原因还是小程序的原因。老师看到了帮忙反馈一下。 回复 nio确实教程少，书籍也不好找 Java IO，NIO，NIO2好像也没引进； 如果想系统学习，我建议买本 《netty实战》， Java自己的nio定位偏重于基础性API，与终端应用需求有点鸿沟</p>
+<p> 新建状态（New） 就绪状态（Runnable）start() 运行状态（Running） run() 阻塞状态（Blocked） 等待阻塞wait() 同步阻塞 同步锁 其他阻塞 sleep()状态超时、 join()等待线程终止或者超时 死亡状态（Dead）异常退出了run()方法</p>
+<p>java的线程状态有BLOCK、WAITING状态， 使用java的内置关键字sychronized时，会出现BLOCK状态。 但如果用java的reentrantLock时，也会出现BLOCK状态的吗， 不应该只有WAITING状态的？ 回复 是 2018-06-26</p>
+<p>Miaozhe   0 杨老师，Sorry。接着上了问题，是我的进程PID搞错了，应该用Javax，我用成eclipse的PID了。 2018-06-22</p>
+<p>jacy   0 尽然可以用ThreadMXBean来抓线程死锁信息，受教了。 循环死锁，会导致cpu某线程的cpu时间片占用率相当高，可以结合操作系统工具分析出线程号，然后用jstack分析线程 2018-06-22  作者回复 不错 2018-06-22</p>
+<p>Miaozhe   0 杨老师，我Win7系统，Java 8上运行Dead Lock Simple例子，通过Jstack获取的Thread 1和Thread 2的线程状态，都是Runnable,但是Waiting on Condition[0x 000000000]。 但是，我通过Thread Group打印出来，两个线程状态都是Block。 晕乎了。。。。 2018-06-21  作者回复 我不能重现，你是jdk8update多少？synchronized正常理解就是Blocked 2018-06-22</p>
+<p>残阳   0 以前做排查的时候看thread dump, 一般都会直接按一些关键字搜索。比如wait，lock之类，然后再找重复的内存地址。看完这遍文章之后感觉对死锁的理解更深刻。 2018-06-17  作者回复 谢谢，地址也很重要 2018-06-19</p>
+<p>肖一林   0 一课一练： 最典型的场景是nio的Selector类，这个类内部有三个集合，并且对这些集合做了同步。如果多个线程同时操作一个Selector，就很容易发生死锁。它的select方法会一直拿着锁，并且循环等待事件发生。如果有其他线程在修改它内部的集合数据，就死锁了。</p>
+<p>同样用jstack可以发现问题，找出被阻塞的线程，看它等待哪个锁，再找到持有这把锁的线程，这个线程一搬处于运行状态 2018-06-16  作者回复 不错，selected key 和 cancelled key的集合不是线程安全的，我记得标准文档就建议</p>
+
+								
+							</article>
+
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

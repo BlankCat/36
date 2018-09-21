@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>java 36</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+			<div id="wrapper" class="fade-in">
+					<div id="intro">
+						<h1>This is<br />
+						java </h1>
+						<p>article of java  <a href="http://blankcat.github.io/">@BlankCat</a> for <a href="http://blankcat.github.io/">Home page</a><br />
+						address:<a href="http://blankcat.github.io/">http://blankcat.github.io/</a>.</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+					<header id="header">
+						<a href="index.html" class="logo">BlankCat</a>
+					</header>
+						<!-- Nav -->
+					<nav id="nav" style="overflow-x: scroll;">
+						<ul class="links">
+							<li class="active"><a href="index.html">01</a></li>
+							<li><a href="02.html">02</a></li>
+							<li><a href="03.html">03</a></li>
+							<li><a href="04.html">04</a></li>
+							<li><a href="05.html">05</a></li>
+							<li><a href="06.html">06</a></li>
+							<li><a href="07.html">07</a></li>
+							<li><a href="08.html">08</a></li>
+							<li><a href="09.html">09</a></li>
+							<li><a href="10.html">10</a></li>
+							<li><a href="11.html">11</a></li>
+							<li><a href="12.html">12</li>
+							<li><a href="13.html">13</a></li>
+							<li><a href="14.html">14</a></li>
+							<li><a href="15.html">15</a></li>
+							<li><a href="16.html">16</a></li>
+							<li><a href="17.html">17</a></li>
+							<li><a href="18.html">18</a></li>
+							<li><a href="19.html">19</a></li>
+							<li><a href="20.html">20</a></li>
+							<li><a href="21.html">21</a></li>
+							<li><a href="22.html">22</a></li>
+							<li><a href="23.html">23</li>
+							<li><a href="24.html">24</a></li>
+							<li><a href="25.html">25</a></li>
+							<li><a href="26.html">26</a></li>
+							<li><a href="27.html">27</a></li>
+							<li><a href="28.html">28</a></li>
+							<li><a href="29.html">29</a></li>
+							<li><a href="30.html">30</a></li>
+							<li><a href="31.html">31</a></li>
+							<li><a href="32.html">32</a></li>
+							<li><a href="33.html">33</a></li>
+							<li><a href="34.html">34</a></li>
+							<li><a href="35.html">35</a></li>
+							<li><a href="36.html">36</a></li>
+							<li><a href="37.html">37</a></li>
+							<li><a href="38.html">38</a></li>
+							<li><a href="39.html">39</a></li>
+							<li><a href="40.html">40</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://github.com/BlankCat" class="icon fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+					<div id="main">
+							<article class="post featured">
+								<p>04-强-软-弱-虚区别？ 强-软-弱-虚应用场景？ 自己的产品或者第三方库使用各种引用的例子？ 解决了什么问题？</p>
+<p> </p>
+<p>在Java语言中， 除了基本数据类型外， 其他的都是指向各类对象的对象引用； Java中根据其生命周期的长短，将引用分为4类。</p>
+<p>1 强引用 特点： new对象 空间不足 oom 我们平常典型编码Object obj = new Object()中的obj就是强引用。 通过关键字new创建的对象所关联的引用就是强引用。 当JVM内存空间不足，JVM宁愿抛出OutOfMemoryError运行时错误（OOM）， 使程序异常终止，也不会靠随意回收具有强引用的“存活”对象来解决内存不足的问题。 对于一个普通的对象，如果没有其他的引用关系， 只要超过了引用的作用域或者显式地将相应（强）引用赋值为 null， 就是可以被垃圾收集的了，具体回收时机还是要看垃圾收集策略。</p>
+<p>2 软引用 特点：oom之前回收软引用，引用队列（强调内存不够用） 软引用通过SoftReference类实现。 软引用的生命周期比强引用短一些。 只有当 JVM 认为内存不足时，才会去试图回收软引用指向的对象： 即JVM 会确保在抛出 OutOfMemoryError 之前，清理软引用指向的对象。 软引用可以和一个引用队列（ReferenceQueue）联合使用， 如果软引用所引用的对象被垃圾回收器回收， Java虚拟机就会把这个软引用加入到与之关联的引用队列中。 后续，我们可以调用ReferenceQueue的poll()方法来检查是否有它所关心的对象被回收。 如果队列为空，将返回一个null,否则该方法返回队列中前面的一个Reference对象。</p>
+<pre><code>应用场景：
+    软引用通常用来实现内存敏感的缓存。
+    如果还有空闲内存，就可以暂时保留缓存，
+    当内存不足时清理掉，这样就保证了使用缓存的同时，
+    不会耗尽内存。</code></pre>
+<p>3 弱引用（GC垃圾回收，不管内存够不够用就会回收） 弱引用通过WeakReference类实现。 弱引用的生命周期比软引用短。 在垃圾回收器线程扫描它所管辖的内存区域的过程中， 一旦发现了具有弱引用的对象，不管当前内存空间足够与否，都会回收它的内存。 由于垃圾回收器是一个优先级很低的线程，因此不一定会很快回收弱引用的对象。 弱引用可以和一个引用队列（ReferenceQueue）联合使用， 如果弱引用所引用的对象被垃圾回收， Java虚拟机就会把这个弱引用加入到与之关联的引用队列中。</p>
+<pre><code>应用场景：
+    弱应用同样可用于内存敏感的缓存。</code></pre>
+<p>4 虚引用 （对象被终结时候，发布一些通知） 特点：虚引用也叫幻象引用，通过PhantomReference类来实现。 无法通过虚引用访问对象的任何属性或函数。 幻象引用仅仅是提供了一种确保对象被 finalize 以后，做某些事情的机制。 如果一个对象仅持有虚引用，那么它就和没有任何引用一样， 在任何时候都可能被垃圾回收器回收。虚引用必须和引用队列 （ReferenceQueue）联合使用。 当垃圾回收器准备回收一个对象时，如果发现它还有虚引用， 就会在回收对象的内存之前，把这个虚引用加入到与之关联的引用队列中。 ReferenceQueue queue = new ReferenceQueue (); PhantomReference pr = new PhantomReference (object, queue); 程序可以通过判断引用队列中是否已经加入了虚引用， 来了解被引用的对象是否将要被垃圾回收。 如果程序发现某个虚引用已经被加入到引用队列， 那么就可以在所引用的对象的内存被回收之前采取一些程序行动。</p>
+<pre><code>应用场景：
+    可用来跟踪对象被垃圾回收器回收的活动，
+    当一个虚引用关联的对象被垃圾收集器回收之前会收到一条系统通知。</code></pre>
+<p> </p>
+<p>我的理解，java的这种抽象很有意思。 强引用就像大老婆，关系很稳固。 软引用就像二老婆，随时有失宠的可能，但也有扶正的可能。 弱引用就像情人，关系不稳定，可能跟别人跑了。 幻像引用就是梦中情人，只在梦里出现过。</p>
+<p> </p>
+<ol type="1">
+<li><p>强引用：项目中到处都是。</p></li>
+<li><p>软引用：图片缓存框架中，“内存缓存”中的图片是以这种引用来保存， 使得JVM在发生OOM之前，可以回收这部分缓存</p></li>
+<li><p>虚引用：在静态内部类中，经常会使用虚引用。 例如，一个类发送网络请求，承担callback的静态内部类， 则常以虚引用的方式来保存外部类(宿主类)的引用，当外部类需要被JVM回收时， 不会因为网络请求没有及时回来，导致外部类不能被回收，引起内存泄漏</p></li>
+<li><p>幽灵引用：这种引用的get()方法返回总是null，所以， 可以想象，在平常的项目开发肯定用的少。但是根据这种引用的特点， 我想可以通过监控这类引用，来进行一些垃圾清理的动作。 不过具体的场景，还是希望峰哥举几个稍微详细的实战性的例子？</p></li>
+</ol>
+<p> 17 引用出现的根源是由于GC内存回收的基本原理—GC回收内存本质上是回收对象， 而目前比较流行的回收算法是【可达性分析算法】， 从GC Roots开始按照一定的逻辑判断一个对象是否可达， 不可达的话就说明这个对象已死（除此之外另外一种常见的算法就是【引用计数法】， 但是这种算法有个问题就是不能解决相互引用的问题）。 基于此Java向用户提供了四种可用的引用：即我们本章讲解到的几种， 同时还提供了一种不可被使用的引用—FinalReference，这个引用是和析构函数密切相关的）。</p>
+<p>强引用， 开发者可以通过new的方式创建， 其它的几种引用Java提供了相应的类：SoftReference、WeakReference、PhantomReference。</p>
+<p>如果你去查看源码你会发现， 这个类实现的核心是Reference与ReferenceQueue（更通俗地说引用队列）两个类，而且这两个类也特别的简单。</p>
+<p>Reference类似一个链表结构，通过创建一个守护线程来执行对应引用的清除、 Cleaner.clean（如果传入的对象是该类的话）、 以及引用的入队操作（需要在创建引用的时候制定一个引用队列）； ReferenceQueue这是制定了引用队列的一些具体操作，简单的来说它也是一个链表结构，并提供了一些基本的链表操作）。 而除了强引用外其它的都是继承于此，通过这样的类约束了引用的相关内容，便于和GC进行交互。 这几种引用的区别如下： 1:强引用是只有当GC明确判断该引用无效的时候才会回收相应的引用对象，即使抛出OOME警告。 2:软引用是当GC检测到继续创建对象会导致OOME的时候会进行一次垃圾回收， 这次回收会讲软引用回收以防抛出异常，根据这样的特点该引用常用来被当作缓存使用。 3:虚引用是哪些如果引用未被使用，就会在最近的一次GC的时候被回收。 例如Java的TheardLocal与动态代理都是基于这样的一个引用实现的， 一般针对那些比较敏感的数据。 4:幻想引用是针对那些已经执行完析【构函数finalize】之后， 仍然需要在执行一些其它操作的对象：比如资源对象的关闭就可以用到这个引用。</p>
+<p></p>
+<p> 对象对jvm堆内存的占用时间长短 对各种引用的理解，可以理解为对象对 jvm 堆内存的占用时长。 对于对象可达性垃圾回收算法，可达性可以认为回收内存的标志。 1，强引用，只要对象引用可达，对象使用的内存就一直被占用。 2，软引用，对象使用的内存一直占用，直到 jvm 认为有必要回收内存。 3，弱引用，对象使用的内存一直占用，直到下一次 gc。</p>
+<p></p>
+<p></p>
+<p>于是我google到了这篇文章,http://www.kdgregory.com/index.php?page=java.refobj ，花了几天（真的是几天，不是几小时）才基本读完，基本理解这几个reference的概念和作用， 从这个角度来讲非常感谢作者，如果不是本文的介绍， 我还以为GC还是按照reference counter的原理处理，原来思路早变了。话说回来， 《Java Reference Objects》真值得大家好好琢磨，相信可以回答很多人的问题， 比如strong reference , soft reference , weak reference怎么互转，如果一个obj 已经 = null,就obj = reference.get()呗， 再有，文章中用weak reference 实现 canonicalizing map改善内存存储效率，减小存储空间的例子，真是非常经典啊。 也希望作者以后照顾一下低层次读者，</p>
+<p>关于引用计数，也有优势，我记得某个国外一线互联网公司调优python，就是只用引用计数，关闭gc</p>
+<p>有个留言问ThreadLocal中，entry的key为软引用，value为实际object. 当key被回收后，object会产生内存泄露问题。同请具体解答。谢谢</p>
+<p>Android 中的Glide 图片加载框架的内存缓存就使用到了弱引用缓存机制 图片相当比较大，所以图片缓存是典型场景</p>
+<p>老师，关于引用类型的划分！ 0 老师，在 Wikipedia 上有一个例子，如下： class A { WeakReference r = new WeakReference(new String(“I’m here”)); WeakReference sr = new WeakReference(“I’m here”); System.gc(); Thread.sleep(100); // only r.get() becomes null System.out.println(“after gc:r =” + r.get() + “,static=” + sr.get()); } Java 8 环境运行之后， r.get() 返回 null，但是 sr.get() 不返回 null。 老师，对上面的例子，我有 2 个疑惑。 1.我对 sr 不返回 null 的理解是： 因为 sr 直接引用的常量池中的字面量 “I’m here”，而常量池对这个字面量本身也有引用，所以无法回收。 这样理解对吗？</p>
+<p>2.在上面的例子中，假如没有 sr，也即代码变为： class A { WeakReference r = new WeakReference(new String(“I’m here”)); System.gc(); Thread.sleep(100); // only r.get() becomes null System.out.println(“after gc:r =” + r.get()); } 在这个类中，在 System.gc 前有 3 个对象，分别是 r、string 对象、常量池中的 “I’m here”。 那么，在 gc 之后，常量池中的 “I’m here” 会被垃圾回收吗？</p>
+<p>然后为什么ThreadLocalMap的Entry是弱引用呢？ 是remove后下一次gc就会立刻释放缓存吧？ 那为什么普通的Map的entry又不是弱引用？ 普通的map就不需要把entry设置为弱引用？ 这个区别在哪？</p>
+<p>详谈一下的post-mortem机制？指的是幻象引用+引用队列这一套机制吗？ 是的 post-mortem机制？ Cleaner 的实现利用了幻象引用（PhantomReference），这是一种常见的所谓 post-mortem 清理机制。利用幻象引用和引用队列，我们可以保证对象被彻底销毁前做一些类似资源回收的工作， 比如关闭文件描述符（操作系统有限的资源）， 它比 finalize 更加轻量、更加可靠。吸取了 finalize 里的教训， 每个 Cleaner 的操作都是独立的，它有自己的运行线程，所以可以避免意外死锁等问题</p>
+<p>apache commons pool 对象池有提供SoftReferencePool实现</p>
+<p>GC ROOT的真实含义 要回收的对象</p>
+<p>按GC层面自己的理解： 强引用是宁愿抛OOM异常也不会回收的对象； 软引用是内存不足时会去回收的对象； 弱引用只要GC线程有扫描到弱引用就会被回收； 而一个对象只有虚引用，等于没有引用一样，随时被GC回收；</p>
+<p>创建一个Student的强引用对象stu； Student stu=new Student(小王&quot;,3); 创建一个弱引用指向Student SoftReference<Student> softReference=new SoftReference<Student>(stu); 问题1 此时如果stu不我不手动的置成stu=null， 就算gc快要发生OOM的时候也不会回收这个Student对象因为它还持有一个强引用stu，这句话对不对？ 问题2 如果stu我置换成了stu=null，此时只有弱引用指向这个student这个时候当内存不足快要发生OOM的时候gc会回收Student占用的这块内存，这句话对不对？ 问题3，如果我从弱引用中获取我这个Student对象，写成 if(softReference.get()!=null) Student student=softReference.get();, 此时这个student是强引用还是弱引用，如果是强引用是不是用完以后需要写成student==null, 如果不写student==null这句 gc快要发生OOM的时候也不会回收这个Student对象, 下次如果继续使用这个对象是不是用同样的方法if(softReference.get()!=null) Student student=softReference.get(); 在获取这个对象</p>
+<p> netty之类底层的优化 除了8种基本数据类型(int,short,byte,long,double,float,boolean,char)，其他都是引用类型！ 除非对于性能完全不敏感，这就是差不多和极致的差别，有兴趣可以看看netty之类底层的优化</p>
+
+								
+							</article>
+
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

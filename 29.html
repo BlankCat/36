@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>java 36</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+			<div id="wrapper" class="fade-in">
+					<div id="intro">
+						<h1>This is<br />
+						java </h1>
+						<p>article of java  <a href="http://blankcat.github.io/">@BlankCat</a> for <a href="http://blankcat.github.io/">Home page</a><br />
+						address:<a href="http://blankcat.github.io/">http://blankcat.github.io/</a>.</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+					<header id="header">
+						<a href="index.html" class="logo">BlankCat</a>
+					</header>
+						<!-- Nav -->
+					<nav id="nav" style="overflow-x: scroll;">
+						<ul class="links">
+							<li class="active"><a href="index.html">01</a></li>
+							<li><a href="02.html">02</a></li>
+							<li><a href="03.html">03</a></li>
+							<li><a href="04.html">04</a></li>
+							<li><a href="05.html">05</a></li>
+							<li><a href="06.html">06</a></li>
+							<li><a href="07.html">07</a></li>
+							<li><a href="08.html">08</a></li>
+							<li><a href="09.html">09</a></li>
+							<li><a href="10.html">10</a></li>
+							<li><a href="11.html">11</a></li>
+							<li><a href="12.html">12</li>
+							<li><a href="13.html">13</a></li>
+							<li><a href="14.html">14</a></li>
+							<li><a href="15.html">15</a></li>
+							<li><a href="16.html">16</a></li>
+							<li><a href="17.html">17</a></li>
+							<li><a href="18.html">18</a></li>
+							<li><a href="19.html">19</a></li>
+							<li><a href="20.html">20</a></li>
+							<li><a href="21.html">21</a></li>
+							<li><a href="22.html">22</a></li>
+							<li><a href="23.html">23</li>
+							<li><a href="24.html">24</a></li>
+							<li><a href="25.html">25</a></li>
+							<li><a href="26.html">26</a></li>
+							<li><a href="27.html">27</a></li>
+							<li><a href="28.html">28</a></li>
+							<li><a href="29.html">29</a></li>
+							<li><a href="30.html">30</a></li>
+							<li><a href="31.html">31</a></li>
+							<li><a href="32.html">32</a></li>
+							<li><a href="33.html">33</a></li>
+							<li><a href="34.html">34</a></li>
+							<li><a href="35.html">35</a></li>
+							<li><a href="36.html">36</a></li>
+							<li><a href="37.html">37</a></li>
+							<li><a href="38.html">38</a></li>
+							<li><a href="39.html">39</a></li>
+							<li><a href="40.html">40</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://github.com/BlankCat" class="icon fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+					<div id="main">
+							<article class="post featured">
+								
+								
+								<p>29-java内存模型的happen-before是什么? java memory model JMM 一段代码如何验证所有符合jmm执行可能？有什么辅助？</p>
+<p>volatile boolean和atomicboolean 一样是原子性的吗？ 回复 volatile只保证可见性</p>
+<p>可从四个维度去理解JMM 1 从JVM运行时视角来看， JVM内存可分为JVM栈、本地方法栈、PC计数器、方法区、堆； 其中前三区是线程所私有的，后两者则是所有线程共有的</p>
+<p>2 从JVM内存功能视角来看， JVM可分为堆内存、非堆内存与其他。 其中堆内存对应于上述的堆区； 非堆内存对应于上述的JVM栈、本地方法栈、PC计数器、方法区； 其他则对应于直接内存</p>
+<p>3 从线程运行视角来看， JVM可分为主内存与线程工作内存。 Java内存模型规定了所有的变量都存储在主内存中； 每个线程的工作内存保存了被该线程使用到的变量，这些变量是主内存的副本拷贝， 线程对变量的所有操作（读取、赋值等）都必须在工作内存中进行， 而不能直接读写主内存中的变量</p>
+<p>4 从垃圾回收视角来看， JVM中的堆区=新生代+老年代。 新生代主要用于存放新创建的对象与存活时长小的对象，新生代=E+S1+S2； 老年代则用于存放存活时间长的对象</p>
+<p>在看了下《深入JAVA虚拟机》的java内存模型章节，又加深点印象。这本书真不能像小说一样读！</p>
+<p>个人觉得happens-before原则最难理解的就是和时间次序上的关系， 就比如volatile变量的写操作happens-before其后的读操作， 之前很难理解“其后”的含义， 一直认为既然是先发生的操作，结果肯定对后续的操作可见啊，以至于认为这个原则是不是多余的。 结合了jmm内存模型来看的话就很好理解了， 一个操作完成，其结果只是在线程内可见的， 在结果写回主存并被其他线程读取前，即使其他线程操作靠后，也无法看见其操作结果。 所以才会有volatile、锁等一系列可见性原则的约束</p>
+<p>jmm可以从两个方面理解， 一是抽象内存结构， jmm把内存结构抽象成主内存和线程本地内存两种， 在计算时， 从主内存中加载数据，在本地内存计算，然后在刷新到主内存， 但这种模型有明显的一致性问题， 二是jmm可以理解我一组保住内存可见性及成正确性的规范， 因为这种模型存在明显的一致性问题，同时， 由于java编译器指令重排序优化和cpu乱序执行优化的存在，使问题变得更加复杂， 所以jmm基于内存屏障提供了类似sa if serial以及happens before的保障。 从使用者的角度理解，jmm平衡了jvm工程师以及cpu工程师在性能上的需求和java程序员在简单性上的渴望， 所以jmm在保证正确性的同时会最大限度的放宽对指令重排和乱序执行的限制。 对于java程序员，jmm提供了如volatile和synchronized这样的顶层机制为程序员提供简单的编程模型。 （参考老师的文章及java并发编程艺术 理解）</p>
+<p>先看了两遍，始终处于懵逼的状态，后来去把《深入理解java虚拟机》相关部分仔细阅读一下，再回来看终于看懂了！</p>
+<p>在网上看了下让双检锁生效的方法，除了用volatile修饰变量外，还有其他两种方式 1、用final 修饰变量 2、用本地线程的方式修复，即在创建对象时存取本地线程（final的），在get的时候再从本地取 回复 对，这里有各种tricky【棘手的】的技巧</p>
+<p>1,验证出 “可见性问题”,这个很容复现 2,验证出“cpu指令优化重排”导致的如 双检锁 中对象未初始化完毕， 即被使用问题。这个对象构造要慢，才容易复现</p>
+<p>之前的问题找到解决方法了，就是使用concurrenthashmap的computeIfAbsent方法，这个方法是加锁的. 文中提到的volatile的例子， 我试了一下并没有复现出来，根据《深入理解JVM》这本书关于volatile的例子复现出来了， 了解了volatile并不能保证字段线程安全 然后Brian Goetz的《java theory and practice:managing volatility》仔细拜读了一下， 还是没有找到能够百分百复现出来的办法 请问有什么方法能够稳定复现出来文中的例子吗？</p>
+<p>老师volatile变量的happens_befor中ues之前必须load。 但是load了不中间不对变量进行操作， 过一会再操作，但是其他线程已经操作了volitile变量。 此时被加载到工作区的volatile变量再执行assgin操作时应该不会重新加载主存数据了对不？</p>
+<p>老师我想问下 为什么jvm里面有时候说的是绑定，有时候说是分派，请问这俩什么区别呀</p>
+<p>java虚拟机规范中对对普通变量的赋值是不是也强制刷新到主内存</p>
+<p> https://shipilev.net/blog/2014/safe-public-construction/#_safe_initialization</p>
+
+								
+							</article>
+
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

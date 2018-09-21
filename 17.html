@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>java 36</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+			<div id="wrapper" class="fade-in">
+					<div id="intro">
+						<h1>This is<br />
+						java </h1>
+						<p>article of java  <a href="http://blankcat.github.io/">@BlankCat</a> for <a href="http://blankcat.github.io/">Home page</a><br />
+						address:<a href="http://blankcat.github.io/">http://blankcat.github.io/</a>.</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+					<header id="header">
+						<a href="index.html" class="logo">BlankCat</a>
+					</header>
+						<!-- Nav -->
+					<nav id="nav" style="overflow-x: scroll;">
+						<ul class="links">
+							<li class="active"><a href="index.html">01</a></li>
+							<li><a href="02.html">02</a></li>
+							<li><a href="03.html">03</a></li>
+							<li><a href="04.html">04</a></li>
+							<li><a href="05.html">05</a></li>
+							<li><a href="06.html">06</a></li>
+							<li><a href="07.html">07</a></li>
+							<li><a href="08.html">08</a></li>
+							<li><a href="09.html">09</a></li>
+							<li><a href="10.html">10</a></li>
+							<li><a href="11.html">11</a></li>
+							<li><a href="12.html">12</li>
+							<li><a href="13.html">13</a></li>
+							<li><a href="14.html">14</a></li>
+							<li><a href="15.html">15</a></li>
+							<li><a href="16.html">16</a></li>
+							<li><a href="17.html">17</a></li>
+							<li><a href="18.html">18</a></li>
+							<li><a href="19.html">19</a></li>
+							<li><a href="20.html">20</a></li>
+							<li><a href="21.html">21</a></li>
+							<li><a href="22.html">22</a></li>
+							<li><a href="23.html">23</li>
+							<li><a href="24.html">24</a></li>
+							<li><a href="25.html">25</a></li>
+							<li><a href="26.html">26</a></li>
+							<li><a href="27.html">27</a></li>
+							<li><a href="28.html">28</a></li>
+							<li><a href="29.html">29</a></li>
+							<li><a href="30.html">30</a></li>
+							<li><a href="31.html">31</a></li>
+							<li><a href="32.html">32</a></li>
+							<li><a href="33.html">33</a></li>
+							<li><a href="34.html">34</a></li>
+							<li><a href="35.html">35</a></li>
+							<li><a href="36.html">36</a></li>
+							<li><a href="37.html">37</a></li>
+							<li><a href="38.html">38</a></li>
+							<li><a href="39.html">39</a></li>
+							<li><a href="40.html">40</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://github.com/BlankCat" class="icon fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+					<div id="main">
+							<article class="post featured">
+								
+								<p>17-线程声明周期-调用两次start会发生什么情况 线程生命周期和状态转换 hello world程序， java会创建几个线程？如何验证？</p>
+<p>程管理器MXBean</p>
+<p>import java.lang.management.ManagementFactory; import java.lang.management.ThreadInfo; public class MainTest { public static void main(String[] args) { // 计算方法1 ThreadGroup threadGroup = Thread.currentThread().getThreadGroup(); while (threadGroup.getParent() != null) { threadGroup = threadGroup.getParent(); } int totalThread = threadGroup.activeCount(); System.out.println(“当前程序线程总数：” + totalThread); Thread[] lstThreads = new Thread[totalThread]; threadGroup.enumerate(lstThreads); for (int i = 0; i &lt; totalThread; i++) { System.out.println(“线程号：” + lstThreads[i].getId() + &quot; = &quot; + lstThreads[i].getName()); } // 计算方法2 // 获取java线程管理器MXBean，dumpAllThreads参数：lockedMonitors参数表示是否获取同步的monitor信息， //lockedSynchronizers表示是否获取同步的synchronizer ThreadInfo[] threadInfos = ManagementFactory.getThreadMXBean().dumpAllThreads(false, false); for (ThreadInfo threadInfo : threadInfos) { System.out.println(“[&quot; + threadInfo.getThreadId() + &quot;]” + threadInfo.getThreadName()); } } }</p>
+<p>当前程序线程总数： 5 线程号：2 = Reference Handler 线程号：3 = Finalizer 线程号：4 = Signal Dispatcher 线程号：5 = Attach Listener 线程号：1 = main [5]Attach Listener [4]Signal Dispatcher [3]Finalizer [2]Reference Handler [1]main 解释 [5]Attach Listener //添加事件 [4]Signal Dispatcher // 分发处理给JVM信号的线程 [3]Finalizer //调用对象finalize方法的线程 [2]Reference Handler //清除reference线程 [1]main //main线程,程序入口 并发编程 https://www.cnblogs.com/z00377750/p/9183179.html</p>
+<p>一课一练: 使用了两种方式获取当前程序的线程数。 1、使用线程管理器MXBean 2、直接通过线程组的activeCount 第二种需要注意不断向上找父线程组，否则只能获取当前线程组，结果是1</p>
+<pre><code>结论:
+使用以上两种方式获取的线程总数都是5个。
+main
+Attach Listener
+Signal Dispatcher
+Finalizer
+Reference Handler
+
+此外，如果使用的IDE是IDEA 
+直接运行会多一个Monitor Ctrl-break线程，
+这个是IDE的原因。
+debug模式下不会有这个线程。
+
+回复
+    不错</code></pre>
+<p>14 做了一个test分析老师的问题，观察到的情况如下： JVM 启动 Hello World的线程分析 环境： macOS + jdk8 检测获得 Thread[Reference Handler,10,system] Thread[Finalizer,8,system] Thread[main,5,main] Thread[Signal Dispatcher,9,system] Hello World! 其中： Reference Handler：处理引用对象本身的垃圾回收 Finalizer：处理用户的Finalizer方法 Signal Dispatcher：外部jvm命令的转发器</p>
+<p>在jdk6环境中 还有一个Attach Listener的线程 是负责接收外部命令的，如jmap、jstack 回复 不错</p>
+<p>theadlocal里面的值如果是线程池的线程里面设置的，当任务完成，线程归还线程池时，这个threadlocal里面的值是不是不会被回收？ 回复 嗯，线程池一般不建议和thread local配合…</p>
+<p>1、站在应用程序方面，只创建了一个线程。 2、站在jvm方面，肯定还有gc等其余线程。</p>
+<p>总结： 1、线程是系统调度的最小单元， 应该是进程吧。线程是操作系统的资源， 在运行的时候会打开文件描述符等。 2、 resume、stop、suspend等已经被废弃了 3、线程的等待和唤醒，建议使用reentrantlock的condition wait/notify方法 4、可以使用线程的join方法、 countdownlatch、 cyclicbarrier、 future等进行线程的等待 回复 不错</p>
+<p>threadlocal在放入值之后，在get出来之后， 需要做remove操作，我这么理解对么？ 以前写的程序都没remove 回复 不用了，明确移除是好习惯</p>
+<p>“比如，线程试图通过 synchronized 去获取某个锁，但是其他线程已经独占了， 那么当前线程就会处于阻塞状态”这个例子换一个理解， 感觉也是在等待其他线程做某些操作。在“阻塞”中也是在“等待”中？？ 回复 wait和blocked是不同的</p>
+<p>大概10来个吧，native占多数。大致分下面几类 1. 用户线程，main 2. GC相关线程，包括C1/C2； 与运行机器配置、操作系统、启动参数相关 3. 编译器/解释器相关线程； 与运行机器配置、操作系统、启动参数相关 4.引用及Finalizer处理线程 6. VM Thread：可以说它类似linux的init进程 7. VM Periodic Task Thread：JVM时钟模拟线程 8. Signal Dispatcher：JVM信号处理线程 9. Attach Listener：jdk工具类请求响应处理线程 10. Service Thread：低内存检测、JVMTI事件转发线程</p>
+<p>“弱引用都会和引用队列配合清理工作， 但是Threadlocal是个例外，它并没有这么做。 这意味着，废弃项目的回收依赖显示地触发，否则就要等待线程的结束” 。 我的疑问：既然没有利用引用队列来实现自动清除， 那TheadLocalMap内部的Entry继承WeakReference有何用意？能起到什么作用？</p>
+<p>threadlocal和线程池结合的问题真的没考虑过 回复 线程池里的线程生命周期长</p>
+<p>NIO 2的异步是不是利用协程的原理设计的？它实际运行的是多线程吗？ 回复 我理解不是一回事，openjdk目前没有协程，Loom过程在做相关事情</p>
+<pre><code>我首先想到的是好歹得sleep一下或打个断点用类似visualvm的工具看下，或者top之类数一下，赶着出门，回来试下</code></pre>
+<p>回复 主要是为了加深理解，这种也就是老学究关心，哈哈</p>
+<p> future模式是怎么异步返回结果的呢？ 是不是把每个线程的运行结果放到queue中， 然后轮询queue返回结果？ 回复 是说FutureTask的实现吗？我记得是有区别的</p>
+
+							</article>
+
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

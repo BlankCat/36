@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>java 36</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+			<div id="wrapper" class="fade-in">
+					<div id="intro">
+						<h1>This is<br />
+						java </h1>
+						<p>article of java  <a href="http://blankcat.github.io/">@BlankCat</a> for <a href="http://blankcat.github.io/">Home page</a><br />
+						address:<a href="http://blankcat.github.io/">http://blankcat.github.io/</a>.</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+					<header id="header">
+						<a href="index.html" class="logo">BlankCat</a>
+					</header>
+						<!-- Nav -->
+					<nav id="nav" style="overflow-x: scroll;">
+						<ul class="links">
+							<li class="active"><a href="index.html">01</a></li>
+							<li><a href="02.html">02</a></li>
+							<li><a href="03.html">03</a></li>
+							<li><a href="04.html">04</a></li>
+							<li><a href="05.html">05</a></li>
+							<li><a href="06.html">06</a></li>
+							<li><a href="07.html">07</a></li>
+							<li><a href="08.html">08</a></li>
+							<li><a href="09.html">09</a></li>
+							<li><a href="10.html">10</a></li>
+							<li><a href="11.html">11</a></li>
+							<li><a href="12.html">12</li>
+							<li><a href="13.html">13</a></li>
+							<li><a href="14.html">14</a></li>
+							<li><a href="15.html">15</a></li>
+							<li><a href="16.html">16</a></li>
+							<li><a href="17.html">17</a></li>
+							<li><a href="18.html">18</a></li>
+							<li><a href="19.html">19</a></li>
+							<li><a href="20.html">20</a></li>
+							<li><a href="21.html">21</a></li>
+							<li><a href="22.html">22</a></li>
+							<li><a href="23.html">23</li>
+							<li><a href="24.html">24</a></li>
+							<li><a href="25.html">25</a></li>
+							<li><a href="26.html">26</a></li>
+							<li><a href="27.html">27</a></li>
+							<li><a href="28.html">28</a></li>
+							<li><a href="29.html">29</a></li>
+							<li><a href="30.html">30</a></li>
+							<li><a href="31.html">31</a></li>
+							<li><a href="32.html">32</a></li>
+							<li><a href="33.html">33</a></li>
+							<li><a href="34.html">34</a></li>
+							<li><a href="35.html">35</a></li>
+							<li><a href="36.html">36</a></li>
+							<li><a href="37.html">37</a></li>
+							<li><a href="38.html">38</a></li>
+							<li><a href="39.html">39</a></li>
+							<li><a href="40.html">40</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://github.com/BlankCat" class="icon fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+					<div id="main">
+							<article class="post featured">
+								<p>25-jvm内存划分-那些区域可以发生outofmemoryerror jvm内部结构 工作机制 今天的思考题是，我在试图分配一个 100M bytes 大数组的时候发生了 OOME， 但是 GC 日志显示，明明堆上还有远不止 100M 的空间，你觉得可能问题的原因是什么？ 想要弄清楚这个问题，还需要什么信息呢？</p>
+<p>如果仅从jvm的角度来看，要看下新生代和老年代的垃圾回收机制是什么。 如果新生代是serial，会默认使用copying算法，利用两块eden和survivor来进行处理。 但是默认当遇到超大对象时，会直接将超大对象放置到老年代中， 而不用走正常对象的存活次数记录。 因为要放置的是一个byte数组，那么必然需要申请连续的空间，当空间不足时，会进行gc操作。 这里又需要看老年代的gc机制是哪一种。如果是serial old，那么会采用mark compat， 会进行整理，从而整理出连续空间， 如果还不够，说明是老年代的空间不够， 所谓的堆内存大于100m是新+老共同的结果。 如果采用的是cms(concurrent mark sweep)，那么只会标记清理，并不会压缩，所以内存会碎片化，同时可能出现浮游垃圾。 如果是cms的话，即使老年代的空间大于100m，也会出现没有连续的空间供该对象使用。 回复 非常不错的总结</p>
+<p>我们拿JDK7来说，有可能的原因是JVM的剩余内存有100M， 但是它是分在不同年龄代的内存区域。 因此应当单独的去查看每一块eden，survivor， old的大小，(通过SurvivorRatio知道s和e的比例大小，通过MaxNewSize知道young和old的比例)看看这三块区域是否有超过100M的内存大小。如果没有， 就是因为没有一个区域能够再存储一个100M的对象。 如果有，就可以通过工具查看下， 每一块e s o每一块区域剩下的内存空间， 如果没有一块内存大小超过100M，便是因为这个原因导致数组分配失败。</p>
+<p>栈 计算资源 线程安全的 堆 共享资源 线程非安全 1，新生代大小过小。无法分配足够的内存。 同时也老年代过小，导致提升失败。 这时系统认为没有足够的空间存放该100M数据。 2，栈可以抽象的看成计算资源。 堆看成存储资源。 计算资源不共享，不会发生线程安全问题。堆资源共享， 容易发生线程安全问题。 3，JAVA 封装了不同系统的线程模型， 结果是在 java 内部有实现了一个通用的 java线程库。 所以就需要用户内存来保存线程信息。</p>
+<p>1总内存100m但是各个区域的内存是否是100m， 当申请连续空间，内存不足就会执行一次gc，但是由于内存空间碎片化 导致内存不够用 从不同的垃圾收集器角度来看： 首先，数组的分配是需要连续的内存空间的（据说，有个别非主流JVM支持大数组用不连续的内存空间分配🤔）。 所以： 1）对于使用年轻代和老年代来管理内存的垃圾收集器，堆大于 100M， 表示的是新生代和老年代加起来总和大于100M， 而新生代和老年代各自并没有大于 100M 的连续内存空间。</p>
+<pre><code>进一步，又由于大数组一般直接进入老年代（会跳过对对象的年龄的判断），
+所以，是否可以认为老年代中没有连续大于 100M 的空间呢。</code></pre>
+<p>2）对于 G1 这种按 region（区域） 来管理内存的垃圾收集器， 可能的情况是没有多个连续的 region，它们的内存总和大于 100M。</p>
+<pre><code>当然，不管是哪种垃圾收集器以及收集算法，当内存空间不足时，
+都会触发 GC，只不过，可能 GC 之后，还是没有连续大于 100M 的内存空间，于是 OOM了。</code></pre>
+<p>回复 很好的视角，g1 region之类确实有影响，另外g1还是有年代的概念的</p>
+<p>堆内存100M 包含了新生代(eden+s0+1)和老年代，大对象一般分配在老年代，那么最有可能在分配过程中老年代的空间不足。 回复 不错，可能性很多，其实和gc的选择也有关，例如g1 region比较小</p>
+<p>能否跟我们介绍一下您平时获取资料的渠道。 比如apache的一些开源项目， 官网上就有很丰富的文档。 但是我们获取jvm相关文档的渠道少之又少， 无非就是博客或者书籍， 这些都比较繁杂，并且可能参杂着很多难以识别的错误观点。 授人以鱼不如授人以渔，先谢谢老师了。 回复 Oracle官网也提供了很多好的文档： 虚拟机规范 https://docs.oracle.com/javase/specs/jvms/se8/html/index.html 诊断指南 https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/index.html 调优指南 https://docs.oracle.com/javase/10/gctuning/ Openjdk网站，或者那些感兴趣的邮件列表 http://mail.openjdk.java.net/mailman/listinfo YouTube上查查javaone， JVM summit之类 回头有必要整理个书单之类</p>
+<p>jsr133 jmm是解决多线程环境一致性，或者可以看做memory ordering model</p>
+<p>可能一，新生代没有足够的连续空间，且不能直接在老年代分配。比如E+S0+S1&gt;100MB，但E&lt;100MB，S0&lt;100MB。 可能二，大对象直接进入老年代，但老年代也没有足够的连续空间。参数+XX:PretenureSizeThreshold。 可能三，线程数量太多，导致物理内存不足。 可能四，直接内存使用太多，导致物理内存不足。 回复 不错，下一章会有更多内存结构细节</p>
+<p>100m的byte数组，一个byte对应一个引用，这样需要100m个的引用， 所以需要的栈空间也不会低于100m,而对象的引用是在栈中分配的，(栈和堆加起来估计不低于200m)况且还是数组，对应的那么多引用还需要分配连续的内存空间，堆空间够的话，个人认为可能是栈空间不足造成的</p>
+<p>JDK 已经发生了很大变化，Intern 字符串的缓存和静态变量曾经都被分配在永久代上， 而永久代已经被元数据区取代。 但是，Intern 字符串缓存和静态变量并不是被转移到元数据区，而是直接在堆上分配？？ 分配在堆上的一个新区域？？不是在新生代也不是在老年代？</p>
+<p>元数据区也存在溢出，那么为什么要用元数据区替换永久代呢，有什么好处吗？ 回复 metaspace 默认是自增的，永久带做不到</p>
+<p>堆内存大小+直接内存大小＞总共内存</p>
+<p>JMM 模型中 各种内存分区 是逻辑分区的。 JVM会根据参数计算每一块分区的起始地址、结束地址？ 如果会，什么时候执行这一操作呢？每一块区域有规定的顺序么？ 回复 vm启动或者线程创建就会计算，但不是完全固定值，运行时可调整</p>
+<p>方法区就是有永久代？那也就是说方法区在jdk8中已经不存在了？ 元数据区跟方法区有什么区别呢？那您的图是jdk7的图，有8得图吗？求解 回复 不是，方法区只是个逻辑概念，永久带和元数据区是具体设计、实现的选择； 以前放到永久带，而且永久带内部还有类似intern字符串之类内容； 元数据区具体内容和永久带也有区别，文章介绍了； 那个图只是个简化示例，8去掉永久带就是了，具体到比较复杂的gc比如g1，就不是这个结构，请看后面讲</p>
+<p>堆内存比例设置不合理 回复 也对，回答比较简洁，哈哈</p>
+<p>后续会到java内存模型吗？之前看了一下jsr133感觉晦涩难懂。 回复 会</p>
+<p>jsr133 java内存规范 JSR-133规范，即JavaTM内存模型与线程规范，由JSR-133专家组开发</p>
+
+								
+								
+								
+							</article>
+
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

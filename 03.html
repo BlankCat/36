@@ -1,0 +1,292 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>java 36</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    </head>
+    <body class="is-preload">
+            <div id="wrapper" class="fade-in">
+                    <div id="intro">
+                        <h1>This is<br />
+                        java </h1>
+                        <p>article of java  <a href="http://blankcat.github.io/">@BlankCat</a> for <a href="http://blankcat.github.io/">Home page</a><br />
+                        address:<a href="http://blankcat.github.io/">http://blankcat.github.io/</a>.</p>
+                        <ul class="actions">
+                            <li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+                        </ul>
+                    </div>
+                    <header id="header">
+                        <a href="index.html" class="logo">BlankCat</a>
+                    </header>
+                        <!-- Nav -->
+                    <nav id="nav" style="overflow-x: scroll;">
+                        <ul class="links">
+                            <li class="active"><a href="index.html">01</a></li>
+                            <li><a href="02.html">02</a></li>
+                            <li><a href="03.html">03</a></li>
+                            <li><a href="04.html">04</a></li>
+                            <li><a href="05.html">05</a></li>
+                            <li><a href="06.html">06</a></li>
+                            <li><a href="07.html">07</a></li>
+                            <li><a href="08.html">08</a></li>
+                            <li><a href="09.html">09</a></li>
+                            <li><a href="10.html">10</a></li>
+                            <li><a href="11.html">11</a></li>
+                            <li><a href="12.html">12</li>
+                            <li><a href="13.html">13</a></li>
+                            <li><a href="14.html">14</a></li>
+                            <li><a href="15.html">15</a></li>
+                            <li><a href="16.html">16</a></li>
+                            <li><a href="17.html">17</a></li>
+                            <li><a href="18.html">18</a></li>
+                            <li><a href="19.html">19</a></li>
+                            <li><a href="20.html">20</a></li>
+                            <li><a href="21.html">21</a></li>
+                            <li><a href="22.html">22</a></li>
+                            <li><a href="23.html">23</li>
+                            <li><a href="24.html">24</a></li>
+                            <li><a href="25.html">25</a></li>
+                            <li><a href="26.html">26</a></li>
+                            <li><a href="27.html">27</a></li>
+                            <li><a href="28.html">28</a></li>
+                            <li><a href="29.html">29</a></li>
+                            <li><a href="30.html">30</a></li>
+                            <li><a href="31.html">31</a></li>
+                            <li><a href="32.html">32</a></li>
+                            <li><a href="33.html">33</a></li>
+                            <li><a href="34.html">34</a></li>
+                            <li><a href="35.html">35</a></li>
+                            <li><a href="36.html">36</a></li>
+                            <li><a href="37.html">37</a></li>
+                            <li><a href="38.html">38</a></li>
+                            <li><a href="39.html">39</a></li>
+                            <li><a href="40.html">40</a></li>
+                        </ul>
+                        <ul class="icons">
+                            <li><a href="https://github.com/BlankCat" class="icon fa-github"><span class="label">GitHub</span></a></li>
+                        </ul>
+                    </nav>
+                    <div id="main">
+                            <article class="post featured">
+                                <p>03-final-finally-finalize的不同? JDK自身使用的Cleaner机制仍然又缺陷，有什么好的建议？</p>
+<p> </p>
+<p>用final修饰的class，这可以有效避免 API 使用者更改基础功能， 某种程度上，这是保证平台安全的必要手段。 这个地方真的很需要个例子去帮助理解。 比如大家都知道String类是被final修饰不可被继承， 但假如没有被final修饰，很好奇会出现什么样不安全的后果。</p>
+<p></p>
+<p>final修饰变量参数的时候，其实理解为内存地址的绑定， 这样理解是不是更直观，基本类型指向栈中，引用类型指向堆中。 老师后期文章能不能说下java堆栈的区别， 还有变量局部变量的生命周期，最好能附上图，加深理解。</p>
+<p> final类不能被继承，没有子类，final类中的方法默认是final的。 final方法不能被子类的方法覆盖，但可以被继承。 final成员变量表示常量，只能被赋值一次，赋值后值不再改变。 final不能用于修饰构造方法。</p>
+<p>要么声明时赋值，要么在构造里赋值</p>
+<p>被final修饰的变量不可变。如果初始化不赋值，后续赋值， 就是从null变成你的赋值，违反不可变</p>
+<p> </p>
+<p>避免使用Finalizer和Cleaner机制 JDK 自身使用的 Cleaner 机制仍然是有缺陷的，你有什么更好的建议吗？ 1，临时对象，使用完毕后，赋值为null,可以加快对象的回收 2，公用资源对象，比如数据库连接，使用连接池（） 3，native调用资源的释放，比如一个进程初始化调用一次，退出调用一次，这类场景可以考虑使用cleaner 4，对尽量try-finally中完成资源的释放，即使用完毕就释放，最小化的使用，下次使用在申请。 5，可以使用钩子进行程序的正常退出清理操作。</p>
+<p>Cleaner机制 JDK9之后用cleaner机制代替了finalize机制，提供了内存清理的另一方法</p>
+<pre><code>finalize机制饱受诟病，因为它回收对象前要先执行Object.finalize()中的逻辑，
+降低了内存回收的效率，而且它不能保证被及时执行，这点很致命，
+导致对象不能及时被回收，例如如果利用finalize关闭打开的文件时，
+因为系统的文件描述符是有限的，如果不能及时的关闭文件，
+会导致无法打开更多的文件。
+
+cleaner机制的使用方法
+plublic class Room implements AutoCloseable{
+    private static final Cleaner cleaner  = Cleaner.create();
+    private static class State implements Runnable{
+        int numJunkPiles;
+        State(int numJunkPiles){
+            this.numJunkPiles = numJunkPiles;
+        }
+        @Override
+        public void run(){
+            System.out.println(&quot;Cleaning room&quot;);
+            numJunkPiles = 0;
+        }
+    }
+    private final State state;
+    private final Cleaner.Cleanable cleanable;
+    public Room(int numJunkPiles){
+        state = new State(numJunkPiles);
+        cleanable = cleaner.register(this,state);
+    }
+    @override
+    public  void close(){
+        cleanable.clean();
+    }
+}
+
+1它的使用方法有点繁琐，和try-with-resource机制一样，需要实现AutoCloseable接口，
+这样在重写的close()方法中释放资源会被自动调用回收。
+2cleaner机制需要创建单独的线程去执行逻辑，这与finalize机制不同。
+执行finalize机制的线程不可控所以cleaner机制不存在类似于先执行finalize逻辑在回收对象的问题，
+即只要执行了cleaner机制就不会降低垃圾回收效率。
+3但是前提是执行了cleaner机制，因为它的clean()方法还是写在重写的close()方法中等待被自动调用，
+所以无法保证保证被及时执行。
+
+好处
+虽然都不能保证垃圾被及时回收，但是finalize机制和cleaner机制还是有用途的
+1可以用来回收本地对等类。
+本地对等类
+本地对等类是java对象委托在本地的非java对象，
+垃圾收集器不知道它们，所以需要这两个机制去回收。
+2还可以用来回收非堆内存，因为GC只回收堆中对象，栈中也会产生内存占用，
+需要用finalize机制去回收。
+3另外，finalize机制和cleaner机制可以作为垃圾回收的最后一道屏障，
+这个时候回收效率慢没关系，因为不会依赖他们去回收垃圾，只是用来把好最后一关。
+
+所以，垃圾收集不能依赖finalize机制和cleaner机制去自动回收，
+最好的方式是用完即使用try-with-resource机制显示释放或者放入资源池重用。</code></pre>
+<p>try-with-resource机制 try-with-resource制在JAVA7之前，程序中必须顺次打开或者关闭资源， 如果只打开了资源没有关闭资源。 就会出现资源泄漏问题，线上代码运行时间越久，程序的效率就会越低。 但是，资源的关闭不仅繁琐而且很容易出问题。</p>
+<pre><code>打开的系统资源，比如流、文件或者Socket连接等，都需要被开发者手动关闭，
+否则随着程序的不断运行，资源泄露将会累积成重大的生产事故。
+
+JDK7的try-with-resource方式的使用
+
+try(资源定义){ 
+    业务逻辑 
+} 
+其实这只是个语法糖
+https://blog.csdn.net/Petershusheng/article/details/53991157</code></pre>
+<p>数据库)的持久锁 数据库是一个多用户共享的资源 事务ACID 事务隔离级别规定了锁的类型 出现并发的时候，就会导致出现各种各样奇怪的问题 比如“脏“数据、修改丢失等问题。 所以数据库并发需要使用事务来控制，事务并发问题需要数据库锁来控制 “丢失修改“，”不可重复读“，”读脏数据“</p>
+<p>数据库锁有“共享锁”，“排它锁”，“互斥锁”，“写锁”，“读锁”，“悲观锁”，“乐观锁”，“行级锁”，“表级锁”，“页级锁”等</p>
+<p>悲观锁和乐观锁 悲观锁可以提高事务隔离级别 设计默认的乐观锁，可以设计一个字段时间戳 TimeStamp ， 提交更新数据先查询时间戳，TimeStamp+1，提交的时候对比时间戳的大小，再进行提交数据， TimeStamp+1，提交的时候对比时间戳的大小，再进行提交数据，</p>
+<p>x表示是排它锁(Exclusive)，s表示共享锁(Share) X锁 S锁 T1 事务1 T2 事务2</p>
+<p>并发操作会导致数据的不一致性，主要包括“丢失数据”，“不可重复读”，“读脏数据等 并发控制会造成活锁和死锁</p>
+<p>活锁 指的是T1封锁了数据R，T2同时也请求封锁数据R，T3也请求封锁数据R，当T1释放了锁之后， T3会锁住R，T4也请求封锁R，则T2就会一直等待下去， 这种处理方法就是采用“先来先服务”策略；</p>
+<p>死锁 就是我等你，你又等我，双方就会一直等待下去，比如： T1封锁了数据R1，正请求对R2封锁，而T2封住了R2,正请求封锁R1，这样就会导致死锁， 死锁这种没有完全解决的方法，只能尽量预防 ①一次封锁发，指的是一次性把所需要的数据全部封锁住，但是这样会扩大了封锁的范围，降低系统的并发度； ②顺序封锁发，指的是事先对数据对象指定一个封锁顺序，要对数据进行封锁，只能按照规定的顺序来封锁，但是这个一般不大可能的。另外，</p>
+<p>系统如何判断出现死锁呢，毕竟出现死锁不能一直干等下去，要及时发现死锁同时尽快解决出现的死锁，诊断和判断死锁有两种方法， 一是超时法， 二是等待图法。 超时法 就是如果某个事物的等待时间超过指定时限，则判定为出现死锁； 等待图法 指的是如果事务等待图中出现了回路，则判断出现了死锁。 撤销死锁代价最小的事务，释放事务所有的锁， 撤销事务执行的数据，进行恢复 对于解决死锁的方法，只能是撤销一个处理死锁代价最小的事务， 释放此事务持有的所有锁， 同时对撤销的事务所执行的数据修改操作必须加以恢复</p>
+<p>锁包括行级锁和表级锁 行级锁 是一种排他锁，防止其他事务修改此行； 表级锁又分为5类： 行共享 (ROW SHARE) – 禁止排他锁定表 行排他(ROW EXCLUSIVE) – 禁止使用排他锁和共享锁 共享锁(SHARE) - 锁定表，对记录只读不写，多个用户可以同时在同一个表上应用此锁 共享行排他(SHARE ROW EXCLUSIVE) – 比共享锁更多的限制，禁止使用共享锁及更高的锁 排他(EXCLUSIVE) – 限制最强的表锁，仅允许其他用户查询该表的行。禁止修改和锁定表。</p>
+<p>web开发必须知道–servlet、连接池、线程池的概念原理和使用 https://blog.csdn.net/lu93it/article/details/52662778</p>
+<p>池化技术 https://blog.csdn.net/syviah/article/details/46550161 一、池化技术 - 简单点来说，就是提前保存大量的资源，以备不时之需。 池化技术主要有线程池，内存池，连接池，对象池等等， 对象池 就是提前创建很多对象，将用过的对象保存起来， 等下一次需要这种对象的时候，再拿出来重复使用 （1）线程池 类似于操作系统中的缓冲区的概念 先启动若干数量的线程，并让这些线程都处于睡眠状态， 当客户端有一个新请求时，就会唤醒线程池中的某一个睡眠线程， 让它来处理客户端的这个请求，当处理完这个请求后，线程又处于睡眠状态。</p>
+<p>（2）内存池（application）【java中内存池就是创建一个大的数组，但是不建议这样做】 里面设置一个全局的Map，设置缓存数据 预先分配足够大的内存，形成一个初步的“内存池”。 分配内存，也就是用户请求内存时，会返回内存池中一块空闲的内存， 并将其标志置为已使用，当然具体细节和方法有很多。 释放内存时，不是真正地调用free或是delete的过程， 而是把内存放回内存池的过程。 在把内存放入内存池的同时，要把标志位置为空闲。 最后在应用程序结束时，要把内存池销毁。 这里主要做的工作就是把内存池中的每一块内存释放</p>
+<pre><code>好处：
+1、减少了内存碎片的产生。
+2、提高了内存的使用效率。
+缺点：
+很有可能会造成内存的浪费，
+原因也很明显，开始分配了一大块内存，不是全部都用得到的。</code></pre>
+<p>（3）数据库连接池 池里面创建许多链接对象 连接组成一个连接池(简单说：在一个“池”里放了好多半成品的数据库联接对象)， 由应用程序动态地对池中的连接进行申请、使用和释放。 1) 最小连接数是连接池一直保持的数据库连接， 所以如果应用程序对数据库连接的使用量不大， 将会有大量的数据库连接资源被浪费；</p>
+<pre><code>2) 最大连接数是连接池能申请的最大连接数，
+如果数据库连接请求超过此数，
+后面的数据库连接请求将被加入到等待队列中，
+这会影响之后的数据库操作。</code></pre>
+<p>注意你的final 值得作用域 生命周期</p>
+<p>有个问题请教一下finalize方法是用来回收对外内存是不是可以这么理解 类似于本地方法申请的能源 new出来的对象实现了这个方法当垃圾回收的时候会将对象放在fqueue等待被执行 不过是异步不知道啥时候被执行 可能被执行的时候对象已经置空导致不安全 可以这么理解吗 新的jdk引入的clear方法 能完全取代虚拟机中finalize方法吗</p>
+<p>java中可达对象和不可达对象 Java中其实也有内存泄露,就是因为对象无用却可达的原因. 这个细分下来有三个 1. 不可用不可达——&gt;这种情况GC会帮我们回收掉,而C++不会 2. 不可用可达 ——&gt;这种情况会存在内存泄露 3. 可用可达 ——&gt;正常使用 1.不可用不可达就是我们的变量作用域结束了,不可用不可达 2. 不可用可达,就是我们自己没有将其对象, 举个例子: 在这个例子中，我们循环申请Object对象，并将所申请的对象放入一个Vector中， 如果我们仅仅释放引用本身，那么Vector仍然引用该对象， 所以这个对象对GC来说是不可回收的。 因此，如果对象加入到Vector后，还必须从Vector中删除 ，最简单的方法就是将Vector对象设置为null</p>
+<pre><code>    Vector v=new Vector(10);
+    for (int i=1;i&lt;100; i++)
+    {
+        Object o=new Object();
+        v.add(o);
+        o=null; 
+    } 
+    //此时，所有的Object对象都没有被释放，因为变量v引用这些对象。 
+    这时候这些Object就是不可用可达的对象,GC不会帮我们清理的, 这就存在了内存泄露了 
+    3. 可用可达正常引用</code></pre>
+<p>main()函数即主函数，是一个前台线程，前台进程是程序中必须执行完成的， 而后台线程则是java中所有前台结束后结束， 不管有没有完成，后台线程主要用与内存分配等方面</p>
+<p>前台线程和后台线程的区别和联系： 1、后台线程不会阻止进程的终止。 属于某个进程的所有前台线程都终止后， 该进程就会被终止。所有剩余的后台线程都会停止且不会完成。 2、可以在任何时候将前台线程修改为后台线程，方式是设置Thread.IsBackground 属性。 3、不管是前台线程还是后台线程，如果线程内出现了异常，都会导致进程的终止。 4、托管线程池中的线程都是后台线程，使用new Thread方式创建的线程默认都是前台线程。 说明：<br />
+应用程序的主线程以及使用Thread构造的线程都默认为前台线程<br />
+使用Thread建立的线程默认情况下是前台线程， 在进程中，只要有一个前台线程未退出，进程就不会终止。 主线程就是一个前台线程。而后台线程不管线程是否结束， 只要所有的前台线程都退出（包括正常退出和异常退出）后，进程就会自动终止。 一般后台线程用于处理时间较短的任务，如在一个Web服务器中可以利用后台线程来处理客户端发过来的请求信息。 而前台线程一般用于处理需要长时间等待的任务， 如在Web服务器中的监听客户端请求的程序，或是定时对某些系统资源进行扫描的程序</p>
+<pre><code>https://www.cnblogs.com/IcanFixIt/p/8133798.html</code></pre>
+<p>1。final修饰的类，不可被继承， 修饰的方法不可被重写， 修饰的变量不可多次赋值。 通过final能够得到性能上的优化， 但是不明显，如果大量使用可能会干扰代码，不能表达出本来具有的含义。 故不使用。匿名内部类， 访问局部变量要求传入的参数，必须是final是要保证数据一致性问题。 2。finally。代码中总是会执行的代码段。除了退出虚拟机外。 3。finalize。在虚拟机回收改对象前进行调用。 此种方式不可取。因为java虚拟机不知道在什么时候才对对象进行回收。</p>
+<p></p>
+<p> 1 匿名内部类为什么访问外部类局部变量必须是final的？ private Animator createAnimatorView(final View view, final int position) { MyAnimator animator = new MyAnimator(); animator.addListener(new AnimatorListener() { <span class="citation" data-cites="Override">@Override</span> public void onAnimationEnd(Animator arg0) { Log.d(TAG, “position=” + position); } }); return animator; } 它其实实现是会copy一份，final可以避免一致性问题</p>
+<p>Cleaner机制会对jvm回收造成负担，因为gc回收的时候需要检测这个对象十分是Cleaner， 然后处理。如果处理过长，十分影响gc的效率。 好点方案， 容器管理对象，比如spring的sopce，或者对象单利等等， gc负担是一个致命问题，所以Cleaner谨慎使用，甚至应该禁止</p>
+<pre><code>    未必有这么可怕，比finalize有数量级的提高，spring这个不错，但不能解决所有场景
+    Scope，也称作用域
+    Spring IoC 容器是指其创建的 Bean 对象相对于其他 Bean 对象的请求可见范围。
+      基本作用域（singleton、prototype），
+        Web 作用域（reqeust、session、globalsession），
+        自定义作用域
+        singleton：单例模式，在整个Spring IoC容器中，使用singleton定义的Bean将只有一个实例
+        prototype：原型模式，每次通过容器的getBean方法获取prototype定义的Bean时，都将产生一个新的Bean实例
+        基于xml
+        &lt;!-- 具体的作用域需要在 scope 属性中定义 --&gt;
+        &lt;bean id=&quot;XXX&quot; class=&quot;com.XXX.XXXXX&quot; scope=&quot;XXXX&quot; /&gt;
+    　2、基于注解开发时
+        @scope(“prototype”)
+    作用域包括：
+    singleton
+        全局只有一个实例
+    prototype
+        每次调用产生一个新的实例
+        在web使用的时候还有三个作用域，但是必须在web.xml中注册一个RequestContextListener ，
+         目的是为了设置每次请求开始和结束都可以使spring得到相应的事件。
+    request
+        每次请求产生一个bean
+    session
+        每个用户session可以产生一个新的bean，不同用户之间的bean互相不影响
+    globalSession
+        作用和session类似，只是使用portlet的时候使用。
+
+    百度一下
+    Portlet和Servlet的异同
+    有关portlet和servlet</code></pre>
+<p></p>
+<p>请问为什么被final修饰的变量需要显示赋值 一、赋值的方式 1、可以定义变量时直接赋值 2、可以在代码块中进行赋值（静态代码块和构造代码块） 3、可以再构造方法中进行赋值。 总结起来，就是要在对象创建之前完成赋值的过程。</p>
+<p>二、值能不能改变的问题 1、对于基本数据类型的，如byte short char int 等， 赋值后被final修饰的变量不能改变。 2、对于引用数据类型，地址不能改变， 但是地址中的值可以发生改变。（String和包装类除外）</p>
+<p>如果是考虑gc回收， 推荐大家更关注weakreference, softreference等结合referencequeue来考虑。 这样对gc更友好些。</p>
+<p>一般来说在框架中做资源创建和回收，都是通过aop Aop的应用场景 主要的功能是：日志记录，性能统计，安全控制，事务处理，异常处理等等。  （******） 关于copy_on_write实现getter方法可以有例子吗？ 因为我理解的该原则是懒修改策略， 但是不变类不应该不做任何修改么？希望可以解答一下。 Java中的Copy-On-Write容器 Copy-On-Write简称COW，是一种用于程序设计中的优化策略。 其基本思路是， 从一开始大家都在共享同一个内容，当某个人想要修改这个内容的时候， 才会真正把内容Copy出去形成一个新的内容然后再改，这是一种延时懒惰策略。</p>
+<pre><code>从JDK1.5开始Java并发包里提供了两个使用CopyOnWrite机制实现的并发容器,
+它们是CopyOnWriteArrayList和CopyOnWriteArraySet。
+CopyOnWrite容器非常有用，
+可以在非常多的并发场景中使用到。
+
+CopyOnWriteArrayList
+添加数据内部会加锁
+读的时候不需要加锁
+
+应用场景
+    读多写少的并发场景。比如白名单，
+    黑名单，商品类目的访问和更新场景，假如我们有一个搜索网站，
+    用户在这个网站的搜索框中，输入关键字搜索内容，但是某些关键字不允许被搜索。
+    这些不能被搜索的关键字会被放在一个黑名单当中，黑名单每天晚上更新一次。
+    当用户搜索时，会检查当前关键字在不在黑名单当中，如果在，则提示不能搜索。
+
+CopyOnWrite的缺点
+内存占用问题。（每次操作都会复一份到内存，容易造成内存溢出）
+数据一致性问题。（只能保证数据最终一致性）</code></pre>
+<p> 为啥生命常量需要加上static final？为啥不是final？ 常量：添加static，编译器即可获取常量，同时不需要实例化这个类就可以访问成员变量 说到final的话，现在更多的会谈到static. 许多代码都会使用到static final来同时修饰一个变量(这里称为常量更合适哈)。 从而可以达到一个编译期常量的作用。 这可以使得我们不需要初始化一个类就能够直接访问其成员， 对节约资源效率上有不少的提升。</p>
+<p>个人认为static之类主要还是注重反应语义的需求， 过早考虑节省资源太片面</p>
+<pre><code>一、static变量分为局部变量和全局变量：
+static局部变量，在函数结束之后，虽然存在，但是不能用了
+static全局变量，全局都能用
+　3.static函数（也叫内部函数）</code></pre>
+<p>Java中有说：finalize 有一种用途： 在 Java 中调用非 Java 代码，在非 Java 代码中若调用了C的 malloc 来分配内存， 如果不调用 C 的free 函数，会导致内存泄露。 所以需要在 finalize 中调用它。</p>
+<p>面试中会有问： 为什么 String 会设计成不可变？ 是的，很多资源都是需要使用本地方式获取和释放 String不可变的原因包括 设计考虑,效率优化问题,以及安全性这三大方面 1. 字符串常量池的需要 字符串常量池(String pool, String intern pool, String保留池) 是Java堆内存中一个特殊的存储区域, 允许String对象缓存HashCode 3. 安全性 String被许多的Java类(库)用来当做参数,假若String不是固定不变的,将会引起各种安全隐患</p>
+<p>列几个 fianlly 不会被执行的情况: 1. try-cach 异常退出。 try{ system.exit(1) }finally{ print(abc) }</p>
+<pre><code>2. 无限循环
+try{
+while(ture){
+    print(abc)
+}
+}finally{
+    print(abc)
+}
+
+3. 线程被杀死
+当执行 try，finally 的线程被杀死时。finally 也无法执行。
+
+总结
+1，不要在 finally 中使用 return 语句。
+2，finally 总是执行，除非程序或者线程被中断。</code></pre>
+<p>java匿名内部类使用外部变量时，外部变量必须是final，为什么？ 匿名内部类，访问局部变量时，局部变量为啥要用final来修饰吗？ 这个因为Java inner class实际会copy一份， 不是去直接使用局部变量，final可以防止出现数据一致性问题</p>
+<p>1定义不可变对象类，当构造函数传入可变对象引用时、当getter函数返回可变对象引用时，容易掉坑。 2 在不可变对象类的构造函数中，如果传入值包括了可变对象，则clone先。 3 从不可变对象类的getter函数返回前，如果返回值为可变对象，则clone先。 4 Java默认的clone方法执行浅拷贝，对于数组、对象引用只是拷贝地址。浅拷贝在业务实现中可能是一个坑，需要多加注意。 5 如果步骤2、3中的浅拷贝无法满足不可变对象要求，请实现“深拷贝”。</p>
+<p>https://www.cnblogs.com/pcideas/articles/5160689.html</p>
+
+                                
+                            </article>
+
+                    </div>
+            </div>
+
+        <!-- Scripts -->
+            <script src="assets/js/jquery.min.js"></script>
+            <script src="assets/js/jquery.scrollex.min.js"></script>
+            <script src="assets/js/jquery.scrolly.min.js"></script>
+            <script src="assets/js/browser.min.js"></script>
+            <script src="assets/js/breakpoints.min.js"></script>
+            <script src="assets/js/util.js"></script>
+            <script src="assets/js/main.js"></script>
+
+    </body>
+</html>

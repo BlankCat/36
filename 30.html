@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>java 36</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    </head>
+    <body class="is-preload">
+            <div id="wrapper" class="fade-in">
+                    <div id="intro">
+                        <h1>This is<br />
+                        java </h1>
+                        <p>article of java  <a href="http://blankcat.github.io/">@BlankCat</a> for <a href="http://blankcat.github.io/">Home page</a><br />
+                        address:<a href="http://blankcat.github.io/">http://blankcat.github.io/</a>.</p>
+                        <ul class="actions">
+                            <li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+                        </ul>
+                    </div>
+                    <header id="header">
+                        <a href="index.html" class="logo">BlankCat</a>
+                    </header>
+                        <!-- Nav -->
+                    <nav id="nav" style="overflow-x: scroll;">
+                        <ul class="links">
+                            <li class="active"><a href="index.html">01</a></li>
+                            <li><a href="02.html">02</a></li>
+                            <li><a href="03.html">03</a></li>
+                            <li><a href="04.html">04</a></li>
+                            <li><a href="05.html">05</a></li>
+                            <li><a href="06.html">06</a></li>
+                            <li><a href="07.html">07</a></li>
+                            <li><a href="08.html">08</a></li>
+                            <li><a href="09.html">09</a></li>
+                            <li><a href="10.html">10</a></li>
+                            <li><a href="11.html">11</a></li>
+                            <li><a href="12.html">12</li>
+                            <li><a href="13.html">13</a></li>
+                            <li><a href="14.html">14</a></li>
+                            <li><a href="15.html">15</a></li>
+                            <li><a href="16.html">16</a></li>
+                            <li><a href="17.html">17</a></li>
+                            <li><a href="18.html">18</a></li>
+                            <li><a href="19.html">19</a></li>
+                            <li><a href="20.html">20</a></li>
+                            <li><a href="21.html">21</a></li>
+                            <li><a href="22.html">22</a></li>
+                            <li><a href="23.html">23</li>
+                            <li><a href="24.html">24</a></li>
+                            <li><a href="25.html">25</a></li>
+                            <li><a href="26.html">26</a></li>
+                            <li><a href="27.html">27</a></li>
+                            <li><a href="28.html">28</a></li>
+                            <li><a href="29.html">29</a></li>
+                            <li><a href="30.html">30</a></li>
+                            <li><a href="31.html">31</a></li>
+                            <li><a href="32.html">32</a></li>
+                            <li><a href="33.html">33</a></li>
+                            <li><a href="34.html">34</a></li>
+                            <li><a href="35.html">35</a></li>
+                            <li><a href="36.html">36</a></li>
+                            <li><a href="37.html">37</a></li>
+                            <li><a href="38.html">38</a></li>
+                            <li><a href="39.html">39</a></li>
+                            <li><a href="40.html">40</a></li>
+                        </ul>
+                        <ul class="icons">
+                            <li><a href="https://github.com/BlankCat" class="icon fa-github"><span class="label">GitHub</span></a></li>
+                        </ul>
+                    </nav>
+                    <div id="main">
+                            <article class="post featured">
+                                
+                                
+                                <p>30-java运行在docker环境的新问题 微服务和serverless等场景java表现的不足 有那些方法改善</p>
+<p>cpu问题 java 10之前： 手动设置jvm相关的选项，如： ParallelGCThreads ConcGCThreads G1ConcRefinementThreads CICompilerCount / CICompilerCountPerCPU java 10+: UseContainerSupport， 默认开启 —————————————————————— mem问题 需关注这几个参数： Xmx: 1/4 * 物理内存 MaxDirectMemorySize Xmx 未设置，物理内存 Xmx 设置了， Xmx - S0(1/10 * Xmx) = 0.9 * Xmx # why? SurvivorRatio默认值8 MaxPermSize: 默认64M <a href="http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html">5.0+ 64 bit: 64M * 1.3 = 85M</a> MaxMetaspaceSize: -1，无限制</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">java5/6/7/8u131-：务必设置上面提到的内存选项</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">懒人可考虑，虽然也不准确</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">java -Xmx<code>cat /sys/fs/cgroup/memory/memory.limit_in_bytes</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">java8u131+和java9+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">java 8u131+和java 9+-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">java 8u191+ UseContainerSupport默认开启，backported；java 9暂未backport这个feature</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">java 10+: UseContainerSupport， 默认开启</td>
+</tr>
+</tbody>
+</table>
+<p>目前业内有很多这种产品:zookeeper、etcd、consul， 三者各有各的特点。这里就不一一说明三者的优缺，仅仅分析consul的优势 1.封装了服务发现的api，开发调用非常简单 2.提供了健康检查功能 3.使用了raft算法保证了一致性，比复杂的paxos算法更直接，相比而言，zk采用的是paxos， 二etcd采用的是raft 4.支持多数据中心，保证多机房使用。 5.支持 http 和 dns 协议接口.，zookeeper 的集成较为复杂,，etcd 只支持 http 协议 6.官方提供web管理界面, etcd 无此功能</p>
+<p>目前容器只跑了java和consul的client进程， consul占的内存很小，java进程被kill掉后，consul进程还在， 我们的java进程被kill掉都是在没有流量进来的时候， 不过您说的使用swap区的我没有设置， 不知道有没有什么影响？</p>
+<p>MAXRAM这个参数好像是openjdk的，oracle jdk文档里没有找到 回复 可以试验一下，我在外面不好翻文档，但应该oracle jdk是有的，openjdk可以说是oracle jdk的子集</p>
+<p>再描述下我们的场景， 我们在线上环境的参数是： xmx1g，永久带256m，docker限制2.2g，其他并没有设置，我们也怀疑是不是堆外内存有问题，于是在准生产环境修改了参数进行测试， 设置了MaxRAM1g，堆外故意设小128m， 然后进行测试，用jconsole进行监控，我们观察到docker容器的内存不断飙升，只升不降， 而jconsole监控的却很正常，young gc很频繁，但是full gc一次没有， 当docker内存接近设置的2.2g时，java进程就基本要被kill掉了，没有任何内存溢出的异常！ 回复 有排查其他进程吗？</p>
+<p>我们现在迁移到docker环境，使用的还是java7，您说的那些参数我们都有设置， 比如docker容器内存大小，最大堆内存，MaxRAM等， 现在的问题是java应用在docker上跑一段时间就会被kill掉， 我们监控内存情况是docker容器内存使用几乎被占满， 但是jvm的内存使用却很正常，不知道为什么？老师能否指点下思路？ 回复 容器内存限制，java xmx MaxDirectMemorySize之类都是多大？ 我们说过内存不只是堆，还有一些在堆外， 需要留点儿余地；kill的时间点附近有收集什么信息没有</p>
+<p>swap java 内存地址交换 import java.lang.reflect.Field;</p>
+<p>public class SwapTest { public static void main(String[] args) { Integer a = 1; Integer b = 2; System.out.println(a + &quot; &quot; + b); swap(a, b); System.out.println(a + &quot; &quot; + b); }</p>
+<pre><code>public static void swap(Integer a, Integer b) {
+    if (a == null || b == null) {
+        return;
+    }
+    //获得a的class对象
+    Class&lt;Integer&gt; integerClass = (Class&lt;Integer&gt;) a.getClass();
+    try {
+        //获得value属性
+        Field value=integerClass.getDeclaredField(&quot;value&quot;);
+        //设置权限为可访问
+        value.setAccessible(true);
+        //交换
+        int temp=a;
+        value.setInt(a,b);
+        value.setInt(b,temp);
+    } catch (NoSuchFieldException e) {
+        e.printStackTrace();
+    } catch (IllegalAccessException e) {
+        e.printStackTrace();
+    }
+}</code></pre>
+<p>// public static void swap(Integer a, Integer b) { // Integer temp; // temp = a; // a = b; // b = temp; // }</p>
+<p>// public static void swap(int a, int b) { // int temp; // temp = a; // a = b; // b = temp; // }</p>
+<p>}</p>
+<p>听说docker里面只能用open-jdk使用oracle-jdk是有法律风险的，现在还是这样么？ 2.jdk8设置了-xmx值小于docker设定的值就好， 我们使用了docker-compose貌似这个只有设定内存使用上限，但是不超过这个值一般没问题， 3.至于swap没有遇见过，能能讲何时会出现么，好预警下。 4.说个docker遇到相关问题就是jdbc驱动，貌似mysql5.14以前的驱动对docker不友好， 如果select count（*） from table 这个值超过5000就会拿不到结果，而实际mysql-server端已经执行完毕并且sleep了 回复 1，法律问题我不知道不评价。个人建议看清事实，莫被人pr； 2，是，出问题是极端情况，大部分场景并不复杂； 3，具体我只注意到有人反应问题，但没有细节； 回到一些常见实践，例如用G1，如果吞吐量不达标， 通常调优堆大小设置为尽量大但又swap不发生，不然会影响吞吐量； 4，很感谢提供这个案例，了解具体问题吗</p>
+
+                                
+                            </article>
+
+                    </div>
+            </div>
+
+        <!-- Scripts -->
+            <script src="assets/js/jquery.min.js"></script>
+            <script src="assets/js/jquery.scrollex.min.js"></script>
+            <script src="assets/js/jquery.scrolly.min.js"></script>
+            <script src="assets/js/browser.min.js"></script>
+            <script src="assets/js/breakpoints.min.js"></script>
+            <script src="assets/js/util.js"></script>
+            <script src="assets/js/main.js"></script>
+
+    </body>
+</html>

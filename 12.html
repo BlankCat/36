@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>java 36</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+			<div id="wrapper" class="fade-in">
+					<div id="intro">
+						<h1>This is<br />
+						java </h1>
+						<p>article of java  <a href="http://blankcat.github.io/">@BlankCat</a> for <a href="http://blankcat.github.io/">Home page</a><br />
+						address:<a href="http://blankcat.github.io/">http://blankcat.github.io/</a>.</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+					<header id="header">
+						<a href="index.html" class="logo">BlankCat</a>
+					</header>
+						<!-- Nav -->
+					<nav id="nav" style="overflow-x: scroll;">
+						<ul class="links">
+							<li class="active"><a href="index.html">01</a></li>
+							<li><a href="02.html">02</a></li>
+							<li><a href="03.html">03</a></li>
+							<li><a href="04.html">04</a></li>
+							<li><a href="05.html">05</a></li>
+							<li><a href="06.html">06</a></li>
+							<li><a href="07.html">07</a></li>
+							<li><a href="08.html">08</a></li>
+							<li><a href="09.html">09</a></li>
+							<li><a href="10.html">10</a></li>
+							<li><a href="11.html">11</a></li>
+							<li><a href="12.html">12</li>
+							<li><a href="13.html">13</a></li>
+							<li><a href="14.html">14</a></li>
+							<li><a href="15.html">15</a></li>
+							<li><a href="16.html">16</a></li>
+							<li><a href="17.html">17</a></li>
+							<li><a href="18.html">18</a></li>
+							<li><a href="19.html">19</a></li>
+							<li><a href="20.html">20</a></li>
+							<li><a href="21.html">21</a></li>
+							<li><a href="22.html">22</a></li>
+							<li><a href="23.html">23</li>
+							<li><a href="24.html">24</a></li>
+							<li><a href="25.html">25</a></li>
+							<li><a href="26.html">26</a></li>
+							<li><a href="27.html">27</a></li>
+							<li><a href="28.html">28</a></li>
+							<li><a href="29.html">29</a></li>
+							<li><a href="30.html">30</a></li>
+							<li><a href="31.html">31</a></li>
+							<li><a href="32.html">32</a></li>
+							<li><a href="33.html">33</a></li>
+							<li><a href="34.html">34</a></li>
+							<li><a href="35.html">35</a></li>
+							<li><a href="36.html">36</a></li>
+							<li><a href="37.html">37</a></li>
+							<li><a href="38.html">38</a></li>
+							<li><a href="39.html">39</a></li>
+							<li><a href="40.html">40</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://github.com/BlankCat" class="icon fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+					<div id="main">
+							<article class="post featured">
+								<p>12-java有几种文件拷贝方式-哪一种最高效? 在channel读取的过程，将不同的片段写入相应的buffer（类似于二进制消息头，消息体） 采用NIO什么机制做到呢</p>
+<p>可以利用NIO分散-scatter机制来写入不同buffer。 Code: ByteBuffer header = ByteBuffer.allocate(128); ByteBuffer body = ByteBuffer.allocate(1024); ByteBuffer[] bufferArray = {header, body}; channel.read(bufferArray); 注意:该方法适用于请求头长度固定。  作者回复 赞</p>
+<p>其实在初始化 DirectByteBuffer 对象时， 如果当前堆外内存的条件很苛刻时， 会主动调用 System.gc()强制执行FGC。 所以一般建议在使用netty时开启XX:+DisableExplicitGC 回复 对，检测不够时会尝试调system.gc， 记得老版本有并发分配bug，会出oom； netty，文中提到了，它是hack到内部自己释放…</p>
+<p>零拷贝是不是可以理解为内核态空间与磁盘之间的数据传输， 不需要再经过用户态空间？ 回复 嗯</p>
+<p>若使用非 directbuffer 操作相关 api 的话， jdk 会将其复制为 ditrctbuff。 并且在线程内部缓存该directbuffer。 jdk 对这个缓存的大小并没有限制。 之前遇到缓存的 directbuffer 过多，导致oom的情况。 后续 jdk 版本加入了对该缓存的限制。 额外一点是尽量不要使用堆内的 bytebuffer 操作 channel 类 api。</p>
+<p>我看1.8的源码中，files.copy共重载了4个方法，其中有三个调用的都是bio， 有一个是您讲的native调用，而没有nio的transferTo。请问这是jdk9变成nio的吗？ 回复 我平时工作在最新版本，现在是jdk11…</p>
+<p>带缓冲区的io流比nio哪一个性能更好？ 回复 嗯，文中提到过，不能一概而论，性能通常是特定场景下的比较才有意义</p>
+<p>上传文件到文件服务器，文件大概10M，经常上传失败。假如我上传的文件改成1M，就没这问题了。不知道什么原因，能提供个思路吗？谢谢 回复 有个建议，工程师在沟通故障时，可以收集下： 出错信息； 客户端、服务端配置； 网络情况，比如是否有代理，等等。 至于思路，能否找到程序异常信息之类，做过哪些尝试将问题缩小范围？ 定位问题通常就是个不断缩小范围，排除不可能的过程。</p>
+<p>上面有两张说明普通copy和nio下的transfer， 我理解大致意思就是后者省去了切换到用户态的开销， 但想问一下前者为什么要设计这样的切换呢?是不是和你copy的数据类型有关?还望详释，谢谢！ 回复 抱歉，这得问Mark R，不清楚历史原因； 我理解大部分工作其实是需要用户态的， transfer是特定场景而非通用场景</p>
+<p>堆外缓存是否与内核缓存是同一个东西？</p>
+<p>问个问题，Byte Buffer对象什么时候被垃圾回收？ 回复 依赖于cleaner，具体时候不好预测， 在快满时会被调用system.gc触发ref处理， 后续版本有所改进，至少不会出现，明明有空间，但并发分配会oom的问题</p>
+<p>如果显示调用system.gc会不会导致堆空间充足， 但fullgc频繁的现象呢？导致应用经常停顿？ 回复 肯定有副作用</p>
+<p>可以具体讲一下MappedByteBuffer的原理和使用技巧么？</p>
+<p>Direct Buffer 生命周期内内存地址都不会再发生更改， 进而内核可以安全地对其进行访问—这里能提高性能的原因 是因为内存地址不变，没有锁争用吗？能否详细解答下？ 回复 我理解不是锁的问题，寻址简单，才好更直接</p>
+<ol type="1">
+<li>经常看到 Java 进程的 RES 大小远超过设置的 Xmx， 可以认为这就是 Direct Memory 的原因吗？ 如果是的话，可以简单的用堆实际占用的大小减去 RES 就是 Direct Memory 的大小吗？</li>
+</ol>
+<p>2.可以认为 Direct Memory 不论在什么情况下都不会引起 Full GC， Direct Memory 的回收只是在 Full GC (或调用 System.gc())的时候顺带着回收下，是吗？ 回复 1，一般不是，那东西有个默认大小的， metaspace codecache等等都会占用， 后面有章节仔细分析 2，不是，它是利用sun.misc.Cleaner, 实际表现有瑕疵，经常要更依赖system gc去触发引用处理， 9和8u有改进，我会有详解</p>
+
+								
+							</article>
+
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

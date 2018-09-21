@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>java 36</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+			<div id="wrapper" class="fade-in">
+					<div id="intro">
+						<h1>This is<br />
+						java </h1>
+						<p>article of java  <a href="http://blankcat.github.io/">@BlankCat</a> for <a href="http://blankcat.github.io/">Home page</a><br />
+						address:<a href="http://blankcat.github.io/">http://blankcat.github.io/</a>.</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+					<header id="header">
+						<a href="index.html" class="logo">BlankCat</a>
+					</header>
+						<!-- Nav -->
+					<nav id="nav" style="overflow-x: scroll;">
+						<ul class="links">
+							<li class="active"><a href="index.html">01</a></li>
+							<li><a href="02.html">02</a></li>
+							<li><a href="03.html">03</a></li>
+							<li><a href="04.html">04</a></li>
+							<li><a href="05.html">05</a></li>
+							<li><a href="06.html">06</a></li>
+							<li><a href="07.html">07</a></li>
+							<li><a href="08.html">08</a></li>
+							<li><a href="09.html">09</a></li>
+							<li><a href="10.html">10</a></li>
+							<li><a href="11.html">11</a></li>
+							<li><a href="12.html">12</li>
+							<li><a href="13.html">13</a></li>
+							<li><a href="14.html">14</a></li>
+							<li><a href="15.html">15</a></li>
+							<li><a href="16.html">16</a></li>
+							<li><a href="17.html">17</a></li>
+							<li><a href="18.html">18</a></li>
+							<li><a href="19.html">19</a></li>
+							<li><a href="20.html">20</a></li>
+							<li><a href="21.html">21</a></li>
+							<li><a href="22.html">22</a></li>
+							<li><a href="23.html">23</li>
+							<li><a href="24.html">24</a></li>
+							<li><a href="25.html">25</a></li>
+							<li><a href="26.html">26</a></li>
+							<li><a href="27.html">27</a></li>
+							<li><a href="28.html">28</a></li>
+							<li><a href="29.html">29</a></li>
+							<li><a href="30.html">30</a></li>
+							<li><a href="31.html">31</a></li>
+							<li><a href="32.html">32</a></li>
+							<li><a href="33.html">33</a></li>
+							<li><a href="34.html">34</a></li>
+							<li><a href="35.html">35</a></li>
+							<li><a href="36.html">36</a></li>
+							<li><a href="37.html">37</a></li>
+							<li><a href="38.html">38</a></li>
+							<li><a href="39.html">39</a></li>
+							<li><a href="40.html">40</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://github.com/BlankCat" class="icon fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+					<div id="main">
+							<article class="post featured">
+								<p>32-如何编写安全性的java代码 开发中的java安全性问题 如何解决的？</p>
+<p>在密码使用的场景中，比如用户注册/登录。 我使用 char[] 数组存储和验证密码，并在使用结束后， 通过随机的字符覆盖掉 char[]。 如果使用 string 存储密码， 由于它的不可变性， 它的缺陷是会一直驻留在堆中，直到未来被垃圾回收。 回复 不错</p>
+<p>最近项目在改安全问题，主要遇到的有： SQL注入， IO流没有关闭，使用不安全Random，重定向Url合法性没做检验， 上传文件前后端没做文件大小类型校验。 通过反射方式访问私有方法。 日志包含敏感信息， 没有禁止除GET,POST以外的HTTP请求等等 回复 jdk新版中 random升级很多， 例如基于DRBG的实现，值得尝试</p>
+<p>多线程访问共享数据会有线程安全问题，是不是在方法内部new的对象也一样存在线程安全问题呢？ 回复 需要理解为什么有线程安全问题， 看是否线程间共享，不可变还是可修改</p>
+<p>我编译的openjdk8,netbeans7.4,按照周志明老师的jvm书籍上说的编译的。 请问oracle jdk也可以编译下来断点调试吗,您那边用的什么IDE调试的愣?</p>
+<p>netbeans…基本没怎么用过，openjdk什么版本？netbeans呢？oracle官方的jdk有这个问题吗？ 另外build的时候有没有加上—enable-debug之类参数？</p>
+<p>hook有直接可用的或者简单修改就能用的推荐吗 回复 openjdk用的是自身定制的…但我理解主流代码检查工具， 都可以试试定制个适合做check-in守门的版本， 想清楚限定什么，一般是个子集</p>
+
+								
+								
+								
+							</article>
+
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

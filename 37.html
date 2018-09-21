@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>java 36</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+			<div id="wrapper" class="fade-in">
+					<div id="intro">
+						<h1>This is<br />
+						java </h1>
+						<p>article of java  <a href="http://blankcat.github.io/">@BlankCat</a> for <a href="http://blankcat.github.io/">Home page</a><br />
+						address:<a href="http://blankcat.github.io/">http://blankcat.github.io/</a>.</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+					<header id="header">
+						<a href="index.html" class="logo">BlankCat</a>
+					</header>
+						<!-- Nav -->
+					<nav id="nav" style="overflow-x: scroll;">
+						<ul class="links">
+							<li class="active"><a href="index.html">01</a></li>
+							<li><a href="02.html">02</a></li>
+							<li><a href="03.html">03</a></li>
+							<li><a href="04.html">04</a></li>
+							<li><a href="05.html">05</a></li>
+							<li><a href="06.html">06</a></li>
+							<li><a href="07.html">07</a></li>
+							<li><a href="08.html">08</a></li>
+							<li><a href="09.html">09</a></li>
+							<li><a href="10.html">10</a></li>
+							<li><a href="11.html">11</a></li>
+							<li><a href="12.html">12</li>
+							<li><a href="13.html">13</a></li>
+							<li><a href="14.html">14</a></li>
+							<li><a href="15.html">15</a></li>
+							<li><a href="16.html">16</a></li>
+							<li><a href="17.html">17</a></li>
+							<li><a href="18.html">18</a></li>
+							<li><a href="19.html">19</a></li>
+							<li><a href="20.html">20</a></li>
+							<li><a href="21.html">21</a></li>
+							<li><a href="22.html">22</a></li>
+							<li><a href="23.html">23</li>
+							<li><a href="24.html">24</a></li>
+							<li><a href="25.html">25</a></li>
+							<li><a href="26.html">26</a></li>
+							<li><a href="27.html">27</a></li>
+							<li><a href="28.html">28</a></li>
+							<li><a href="29.html">29</a></li>
+							<li><a href="30.html">30</a></li>
+							<li><a href="31.html">31</a></li>
+							<li><a href="32.html">32</a></li>
+							<li><a href="33.html">33</a></li>
+							<li><a href="34.html">34</a></li>
+							<li><a href="35.html">35</a></li>
+							<li><a href="36.html">36</a></li>
+							<li><a href="37.html">37</a></li>
+							<li><a href="38.html">38</a></li>
+							<li><a href="39.html">39</a></li>
+							<li><a href="40.html">40</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://github.com/BlankCat" class="icon fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+					<div id="main">
+							<article class="post featured">
+								<p>37-spring-bean生命周期和作用 spring声明事务实现机制</p>
+<p>老师，IOC 为什么可以实现解耦吖？ 在引入 IOC 容器之前，对象 A 依赖于对象 B，则需要 A 主动去创建对象 B，控制权都在 A。 在引入 IOC 容器之后，当对象 A 运行到需要对象 B 的时候， IOC 容器会主动创建一个对象 B 注入到对象 A，控制权在容器。 控制权发生了反转，为什么能降价系统耦合，或者说降低什么之间的耦合？ （自己的理解：应该不是降低对象间的耦合，因为不管由 A 还是容器创建 B 对象，A 都是耦合 B 的。感觉自己理解的方向偏了。） 回复 IOC容器负责打理这些事情。同样的依赖关系，一个是a自己负责，一个是ioc容器负责， 相当于ab之间的直接联系，变成了间接的。再配合OO，更换实现只需要修改配置</p>
+<p>声明式事务是通过beanPostProcessor来实现的， springioc会用beanPostProcessor的某个方法（具体方法名忘记了，这里假设为方法A） 返回结果作为getBean的结果。 所以spring的事务模块在方法A中， 用代理的方式，在目标方法前后加入一些与事务有关的代码，方法A的返回值就是这个代理类。欢迎拍砖！ 回复 喜欢读读源码而已，不敢说有多深入， 因为实际踩坑经验不足；补充本文是因为虽然已经36篇， 但是Java开发者不会只用Java se自身，开源项目必不可少</p>
+<p>读老师的文章收益很大，希望老师再对框架多讲一些，还有底层原理，毕竟很多时候看源码很费力，提点下会好很多！ 回复 坦白说，真的要提高还是要靠自己，建议你看看别人的思路而不只是他的观点，源码就和上学读英文一样 ，看多了就不犯困，尽量让自己有输出</p>
+<p>Advice 的时序图的before,after画反了吗</p>
+<p>1 Spring容器初始化开始: 1.[BeanFactoryPostProcessor]接口实现类的构造器 2.[BeanFactoryPostProcessor]的postProcessorBeanFactory方法 3.[BeanPostProcessor]接口实现类的构造器 4.[InstantiationAwareBeanPostProcessorAdapter]构造器 5.[InstantiationAwareBeanPostProcessorAdapter]的postProcessBeforeInstantiation方法(从这里开始初始化bean) 6.[Bean]的构造器 7.[InstantiationAwareBeanPostProcessorAdapter]的postProcessAfterInstantiation 8.[InstantiationAwareBeanPostProcessorAdapter]的postProcessPropertyValues方法 9.[Bean]属性注入，setter方法 10.[Bean]如果实现了各种XXXaware接口，依次调用各个setXXX(如BeanNameAware.setBeanName(),BeanFactoryAware.setBeanFactory()) 11.[BeanPostProcessor]的postProcessBeforeInitialization方法 12.[InstantiationAwareBeanPostProcessorAdapter]的postProcessBeforeInitialization方法 13.[Bean]自定义的init-method 14.[Bean]如果实现了InitializingBean接口，此时会调用它的afterPropertiesSet方法 15.[BeanPostProcessor]的postProcessAfterInitialization方法(此时bean初始化完成) 16.[InstantiationAwareBeanPostProcessorAdapter]的postProcessInitialization方法(到这里容器初始化完成) 17.业务逻辑bean的使用</p>
+<p>Bean的销毁过程: 1.[DisposableBean]的destory方法 2.[Bean]自定义的destory-method方法</p>
+<p>说明:如果有多个bean需要初始化，会循环执行5–15。</p>
+<p>关于生命周期，只讨论了初始化过程和销毁过程， 那么什么时候引发的初始化呢？ 什么时候触发销毁操作呢？ spring容器管理的bean是在容器运行过程中不会被销毁吧？</p>
+<p>能否分享下你看spring源码的技巧，和方法， 我也读了一些其他的源码， 感觉spring太全复杂度就很高，看着看着就迷失了 回复 个人的建议： 明确目的、目标，尽量让自己有个清晰的体系； 如果有实际任务驱动更好，毕竟大多数情况是随便看看， 没有收获感，也就浅尝辄止了； 有输出，能表达出来，才好验证</p>
+<p>因为我也读了几次spring的源码， 相比其他我读过的源码个人觉得spring复杂度很复杂， 很多细节看着看着就迷失在他的代码里面了能否分享下你看spring源码的方法，感谢</p>
+<p>声明式事务其实说白了是一种特殊的aop应用， 它其实包括两种advice， 一种是around，另外一种是after-throwing。 利用around advice在方法执行前，先关闭数据库的自动提交功能，然后设定一个标志符。 根据业务代码实际的情况，对标志符赋不同的值，如果数据更新成功赋true，否则false。 在业务方法执行完之后的部分对标志符进行处理。如为true，则提交数据库操作，否则就进行回滚。 另外还会使用after-throwing，对出错的信息进行记录。然后再将错误抛出至上层。</p>
+<p>能否介绍一下热加载，还有目前第三方软件，class，jar都可以热加载。</p>
+
+								
+								
+								
+							</article>
+
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

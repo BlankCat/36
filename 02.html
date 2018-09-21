@@ -1,0 +1,230 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>java 36</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+			<div id="wrapper" class="fade-in">
+					<div id="intro">
+						<h1>This is<br />
+						java </h1>
+						<p>article of java  <a href="http://blankcat.github.io/">@BlankCat</a> for <a href="http://blankcat.github.io/">Home page</a><br />
+						address:<a href="http://blankcat.github.io/">http://blankcat.github.io/</a>.</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+					<header id="header">
+						<a href="index.html" class="logo">BlankCat</a>
+					</header>
+
+				
+				<!-- Nav -->
+					<nav id="nav" style="overflow-x: scroll;">
+						<ul class="links">
+							<li class="active"><a href="index.html">01</a></li>
+							<li><a href="02.html">02</a></li>
+							<li><a href="03.html">03</a></li>
+							<li><a href="04.html">04</a></li>
+							<li><a href="05.html">05</a></li>
+							<li><a href="06.html">06</a></li>
+							<li><a href="07.html">07</a></li>
+							<li><a href="08.html">08</a></li>
+							<li><a href="09.html">09</a></li>
+							<li><a href="10.html">10</a></li>
+							<li><a href="11.html">11</a></li>
+							<li><a href="12.html">12</li>
+							<li><a href="13.html">13</a></li>
+							<li><a href="14.html">14</a></li>
+							<li><a href="15.html">15</a></li>
+							<li><a href="16.html">16</a></li>
+							<li><a href="17.html">17</a></li>
+							<li><a href="18.html">18</a></li>
+							<li><a href="19.html">19</a></li>
+							<li><a href="20.html">20</a></li>
+							<li><a href="21.html">21</a></li>
+							<li><a href="22.html">22</a></li>
+							<li><a href="23.html">23</li>
+							<li><a href="24.html">24</a></li>
+							<li><a href="25.html">25</a></li>
+							<li><a href="26.html">26</a></li>
+							<li><a href="27.html">27</a></li>
+							<li><a href="28.html">28</a></li>
+							<li><a href="29.html">29</a></li>
+							<li><a href="30.html">30</a></li>
+							<li><a href="31.html">31</a></li>
+							<li><a href="32.html">32</a></li>
+							<li><a href="33.html">33</a></li>
+							<li><a href="34.html">34</a></li>
+							<li><a href="35.html">35</a></li>
+							<li><a href="36.html">36</a></li>
+							<li><a href="37.html">37</a></li>
+							<li><a href="38.html">38</a></li>
+							<li><a href="39.html">39</a></li>
+							<li><a href="40.html">40</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://github.com/BlankCat" class="icon fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+					<div id="main">
+							<article class="post featured">
+								
+								<p>02-exception-error的区别</p>
+<p>NoClassDefFoundError 和 ClassNotFoundException 有什么区别 前者是找不到类的定义，类文件还在； 后者是找不到class文件； 前者可能是在类初始化的时候（比如初始化某个变量报错）发生异常； 后者可能是找不到引用的类文件，可能是某个包没有导入. 前者是运行时异常， 后者是可检查异常</p>
+<p>为什么不建议用异常控制正常业务流程？ 因为这种条件判断方式是低效的。具体原因：Java 每实例化一个 Exception， 都会对当时的栈进行快照，这是一个相对比较重的操作。 如果发生的非常频繁，这个开销可就不能被忽略了。</p>
+<p>1.异常的父类。throwable. 2.异常的分类。error错误。exception异常。 3。对异常分类的使用。error是jvm环境运行错误，不可进行捕获。包括，throwable。 exception是程序上的错误，需要在错误时进行捕获，恢复正常运行的形态。 对异常捕获，最好进行异常类型最匹配的形式，这样具有日志堆栈信息便于查询，排错。 4。异常的使用是比较消耗性能。消耗性能的方式有try代码快，与生成exception的堆栈快照。 5。注意信息。在生成exception错误信息时，不能使用exception自带方法进行输出。 这种方式，不清楚会输出到什么地方，不好排查。 6。异常实践。异常分2种进行处理，一种业务异常，一种程序异常。 业务异常直接抛出，程序异常，先处理一次，如果处理不了在进行抛出。</p>
+<p>从架构，或者不同模块的角度，推荐大家注意一个点， 一般类似mybatis这类的框架，都会有关于exception的converter【异常的转换器】， 比如mybatis会先封装mysqlexception，然后是自己的， 再封装向上是spring的exception。 类似的思想在微服务调用链路也有体现， 上游服务对下游服务的error解析convert， 是可以加强代码健壮性的。</p>
+<p>1，无论各种异常均可以看成线程无法继续执行的信号(引发线程中断)。 是否恢复执行由用户决定。信号的重要程度构成了 Throwable 的继承层级。 2，既然是线程无法继续执行就需要打印线程的执行状况。以便分析。 3，既然是线程中断，就可以跨调用 catch 与throw 而不用像 c 等过程语言要判断每个函数的返回。方便统一 catch 处理。</p>
+<hr />
+<p>异常开发处理？ 1，完善的异常记录。 包括调用的上下文信息，如果在同一个进程内考虑ThreadLocal传递参数。 如果分布式，把核心的参数封装传递。 2，在基础1之上构建traceid之类的调用链跟踪。 3，基于回调机制，发生异常时以事件的方式通知调用方。</p>
+<p>另 对学习的的结果做个小总结。首先二者继承体系的异同。设计里面也不同， error一般表示不可自主从异常中恢复， Exception意味着可能可以恢复。 其中Exception分为两类检查异常，非检查异常。 最佳实践， try中的代码块不宜过长，捕获时不宜大而全， finally里只释放资源不要有业务逻辑，尤其是修改返回值。 用新语法可增强代码的可读性和简洁性。 业务异常可继承runntimeexception，封装applicationexception. finally中的代码始终是执行的，用途为清理资源。 对于线程池注意runntimeexception导致的线程逃逸现象。</p>
+<p>——延申—— 相同进程ThreadLocal传递参数 http://www.cnblogs.com/ldq2016/p/9041856.html JDK 1.2的版本中就提供java.lang.ThreadLocal， ThreadLocal为解决多线程程序的并发问题提供了一种新的思路。 使用这个工具类可以很简洁地编写出优美的多线程程序</p>
+<p>ThreadLocal维护变量时，ThreadLocal为每个使用该变量的线程提供独立的变量副本， 所以每一个线程都可以独立地改变自己的副本，而不会影响其它线程所对应的副本</p>
+<p>线程本身的本地变量：Local的意思就是变共享变量为线程内部的本地变量 从线程的角度看，目标变量就象是线程的本地变量，这也是类名中“Local”所要表达的意思 ThreadLocal维护一个Map，key就是线程本身，value存储的是线程的变量副本值</p>
+<p>ThreadLocal的接口方法【4个接口方法】 void set(Object value)设置当前线程的线程局部变量的值。 public Object get()该方法返回当前线程所对应的线程局部变量。 public void remove()将当前线程局部变量的值删除，【加快垃圾回收的速度】 目的是为了减少内存的占用，该方法是JDK 5.0新增的方法。 需要指出的是，当线程结束后，对应该线程的局部变量将自动被垃圾回收， 所以显式调用该方法清除线程的局部变量并不是必须的操作， 但它可以加快内存回收的速度。 protected Object initialValue()【初始化线程get的值，只会调用一次】 返回该线程局部变量的初始值， 该方法是一个protected的方法，显然是为了让子类覆盖而设计的。 这个方法是一个延迟调用方法， 在线程第1次调用get()或set(Object)时才执行， 并且仅执行1次。 ThreadLocal中的缺省实现直接返回一个null。</p>
+<p>在JDK5.0中，ThreadLocal已经支持泛型， 该类的类名已经变为ThreadLocal<T>。 API方法也相应进行了调整，新版本的API方法分别是void set(T value)、T get()以及T initialValue()。</p>
+<p>Thread同步机制的比较 　ThreadLocal和线程同步机制相比有什么优势呢？ ThreadLocal和线程同步机制都是为了解决多线程中相同变量的访问冲突问题。</p>
+<p>　　在同步机制中，通过对象的锁机制保证同一时间只有一个线程访问变量。 这时该变量是多个线程共享的，使用同步机制要求程序慎密地分析什么时候对变量进行读写， 什么时候需要锁定某个对象，什么时候释放对象锁等繁杂的问题，程序设计和编写难度相对较大。</p>
+<p>　　而ThreadLocal则从另一个角度来解决多线程的并发访问。 ThreadLocal会为每一个线程提供一个独立的变量副本， 从而隔离了多个线程对数据的访问冲突。 因为每一个线程都拥有自己的变量副本， 从而也就没有必要对该变量进行同步了。 ThreadLocal提供了线程安全的共享对象， 在编写多线程代码时，可以把不安全的变量封装进ThreadLocal。</p>
+<p>　　由于ThreadLocal中可以持有任何类型的对象， 低版本JDK所提供的get()返回的是Object对象， 需要强制类型转换。 但JDK 5.0通过泛型很好的解决了这个问题， 在一定程度地简化ThreadLocal的使用， 代码清单 9 2就使用了JDK 5.0新的ThreadLocal<T>版本。</p>
+<p>　　概括起来说，对于多线程资源共享的问题， 同步机制采用了“以时间换空间”的方式， 而ThreadLocal采用了“以空间换时间”的方式。 前者仅提供一份变量，让不同的线程排队访问， 而后者为每一个线程都提供了一份变量， 因此可以同时访问而互不影响。</p>
+<p>　　Spring使用ThreadLocal解决线程安全问题我们知道在一般情况下， 只有无状态的Bean才可以在多线程环境下共享， 在Spring中，绝大部分Bean都可以声明为singleton作用域。 就是因为Spring对一些Bean（如RequestContextHolder、 TransactionSynchronizationManager、LocaleContextHolder等） 中非线程安全状态采用ThreadLocal进行处理，让它们也成为线程安全的状态， 因为有状态的Bean就可以在多线程中共享了。</p>
+<p>Web应用划分为展现层、服务层和持久层三个层次， 在不同的层中编写对应的逻辑，下层通过接口向上层开放功能调用。 在一般情况下，从接收请求到返回响应所经过的所有程序调用都同属于一个线程</p>
+<p>https://www.cnblogs.com/linjiqin/p/4484606.html</p>
+<p>线程逃逸现象 https://blog.csdn.net/daiyutage/article/details/70142686 在Thread的run方法中，Java是不允许抛出受检异常的， 所以必须由自己捕获，但是对于一些运行时的异常， 难免有时候完全捕获到，继而传递到上一层， 导致不可预料的程序终止，所以需要在上一层捕获</p>
+<p>Java语言规范将派生于 Error类或 RuntimeException类的所有异常称为未检查（unchecked）异常， 所有其他的异常成为已检查（checked）异常。 编译器将检查是否为所有的已检查异常提供了异常处理器。（try catch） 平时我们使用throws往外拋错，或者try-catch这类异常处理器不就是处理已检查异常吗 未检查异常就是潜在的，编译器无需提供异常处理器进行处理。</p>
+<p>Java 每实例化一个 Exception，都会对当时的栈进行快照， 这是一个相对比较重的操作。 如果发生的非常频繁，这个开销可就不能被忽略了。</p>
+<p>error指的是不可预料的错误，可能会导致程序宕机； 而exception指的是在程序运行中可以预见的异常，</p>
+<p>而异常分为检查异常与一般异常， 检查异常需要在程序中显示捕获并处理， 一般异常可以通过程序编码来进行处理，比如数组越界，空指针等；</p>
+<p>异常处理的两大基本原则： 不要捕获泛泛的异常信息，比如直接捕获Exception，这样会在增加代码阅读难度； 不要生吞异常； 打印异常信息是一个比较重的操作，会导致程序变慢； try catch最好是包括需要检验异常的代码， 不要包含过长代码，这样会降低JVM的优化效率；</p>
+<p>promise/future风格的 Promise模式是一种异步编程模式 。 它使得我们可以先开始一个任务的执行， 并得到一个用于获取该任务执行结果的凭据对象， 而不必等待该任务执行完毕就可以继续执行其他操作。 等到我们需要该任务的执行结果时， 再调用凭据对象的相关方法来获取。 这样就避免了不必要的等待， 增加了系统的并发性。</p>
+<p>非阻塞的模型：Promise，Future 和 Callback。 其中的 Future 表示一个可能还没有实际完成的异步任务的结果， 针对这个结果可以添加 Callback 以便在任务执行成功或失败后做出对应的操作， 而 Promise 交由任务执行者，任务执行者通过 Promise 可以标记任务完成或者失败。 可以说这一套模型是很多异步非阻塞架构的基础</p>
+<p>反应式编程？ 由于反应式编程是异步的，基于事件的， 所以异常肯定不能直接抛出，如果直接抛出， 随便一个异常都会引起程序崩溃，直接影响到对后续事件处理。 个人觉得一种处理方式是： 当某个事件发生异常时，为了不影响对后续事件的处理， 可以对当前发生异常的事件进行拦截处理， 然后将异常信息发送出去。</p>
+<pre><code>至于发生异常时，
+堆栈信息只是关于特定executor框架中的，
+不知道是否可以将之前事件的“上下文”带到executor，
+再传递给观察者？</code></pre>
+<p>java并发编程–Executor框架 https://www.cnblogs.com/MOBIN/p/5436482.html Eexecutor作为灵活且强大的异步执行框架， 其支持多种不同类型的任务执行策略， 提供了一种标准的方法将任务的提交过程和执行过程解耦开发， 基于生产者-消费者模式， 其提交任务的线程相当于生产者， 执行任务的线程相当于消费者， 并用Runnable来表示任务， Executor的实现还提供了对生命周期的支持， 以及统计信息收集， 应用程序管理机制和性能监视等机制。</p>
+<p>类结构图 Executor：一个接口，其定义了一个接收Runnable对象的方法executor， 其方法签名为executor(Runnable command),</p>
+<pre><code>    ExecutorService：是一个比Executor使用更广泛的子类接口，
+    其提供了生命周期管理的方法，
+    以及可跟踪一个或多个异步任务执行状况返回Future的方法
+     
+    AbstractExecutorService：ExecutorService执行方法的默认实现
+     
+    ScheduledExecutorService：一个可定时调度任务的接口
+     
+    ScheduledThreadPoolExecutor：ScheduledExecutorService的实现，
+    一个可定时调度任务的线程池
+     
+    ThreadPoolExecutor：线程池，可以通过调用Executors以下
+    静态工厂方法来创建线程池并返回一个ExecutorService对象：</code></pre>
+<p>2.ThreadPoolExecutor构造函数的各个参数说明 ThreadPoolExecutor方法签名： public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workQueue, ThreadFactory threadFactory, RejectedExecutionHandler handler) //后两个参数为可选参数 参数讲解： corePoolSize：核心线程数 maximumPoolSize:最大线程数 corePoolSize &lt;运行的线程数&lt; maximumPoolSize:仅当队列满时才创建新线程 corePoolSize=运行的线程数= maximumPoolSize：创建固定大小的线程池 keepAliveTime:如果线程数多于corePoolSize,则这些多余的线程的空闲时间超过keepAliveTime时将被终止 unit:keepAliveTime参数的时间单位 workQueue:保存任务的阻塞队列，与线程池的大小有关： 当运行的线程数少于corePoolSize时，在有新任务时直接创建新线程来执行任务而无需再进队列 当运行的线程数等于或多于corePoolSize，在有新任务添加时则选加入队列，不直接创建线程 当队列满时，在有新任务时就创建新线程 threadFactory:使用ThreadFactory创建新线程，默认使用defaultThreadFactory创建线程 handler:定义处理被拒绝任务的策略，默认使用ThreadPoolExecutor.AbortPolicy,任务被拒绝时将抛出RejectExecutorException</p>
+<pre><code>*****
+提交一个任务：
+若执行线程数&lt;core线程数，则创建线程执行任务，这个线程是属于core线程的
+若执行线程数&gt;=core线程数，则将任务放到阻塞队列中，由已有线程提取执行。
+若阻塞队列满时，则创建新的线程来执行该任务，而队列中的任务则还是由已有的全部线程来逐个执行。
+非core线程在等待若干时间后任然无法执行任务的情况下，则被销毁，而核心线程不会被销毁。</code></pre>
+<p>3.Executors：提供了一系列静态工厂方法用于创建各种线程池 newFixedThreadPool: 创建可重用且固定线程数的线程池， 如果线程池中的所有线程都处于活动状态， 此时再提交任务就在队列中等待，直到有可用线程； 如果线程池中的某个线程由于异常而结束时，线程池就会再补充一条新线程。 newSingleThreadExecutor: 创建一个单线程的Executor，如果该线程因为异常而结束就新建一条线程来继续执行后续的任务 newScheduledThreadPool: 创建一个可延迟执行或定期执行的线程池 newCachedThreadPool: 创建可缓存的线程池，如果线程池中的线程在60秒未被使用就将被移除， 在执行新的任务时，当线程池中有之前创建的可用线程就重用可用线程，否则就新建一条线程</p>
+<p>4.Executor的生命周期 ExecutorService提供了管理Eecutor生命周期的方法， ExecutorService的生命周期包括了： 运行 关闭和终止三种状态。 ExecutorService在初始化创建时处于运行状态。 shutdown方法等待提交的任务执行完成并不再接受新任务，在完成全部提交的任务后关闭 shutdownNow方法将强制终止所有运行中的任务并不再允许提交新任务</p>
+<pre><code>ExecutorCompletionService:实现了CompletionService，
+将执行完成的任务放到阻塞队列中，通过take或poll方法来获得执行结果</code></pre>
+<p>异常使用原则？ 1.Error:系统错误，虚拟机出错，我们处理不了，也不需要我们来处理。 2.Exception，可以捕获的异常，且作出处理。 也就是要么捕获异常并作出处理，要么继续抛出异常。 3.RuntimeException，经常性出现的错误，可以 捕获，并作出处理，可以不捕获，也可以不用抛出。 ArrayIndexOutOfBoundsException像这种异常可以不捕获，为什么呢？ 在一个程序里，使用很多数组，如果使用一次捕获一次，则很累。 4.继承某个异常时，重写方法时，要么不抛出异常，要么抛出一模一样的异常。 5.当一个try后跟了很多个catch时，必须先捕获小的异常再捕获大的异常。 6.假如一个异常发生了，控制台打印了许多行信息， 是因为程序中进行多层方法调用造成的。关键是看类型和行号。 7.上传下载不能抛异常。上传下载一定要关流。 8.异常不是错误。异常控制代码流程不利于代码简单易读。 9.try catch finally执行流程，与 return，break，continue等混合使用注意代码执行顺序。 不是不可以，而是越是厉害的人，代码越容易理解。</p>
+<p>1.异常：这种情况下的异常，可以通过完善任务重试机制， 当执行异常时，保存当前任务信息加入重试队列。 重试的策略根据业务需要决定， 当达到重试上限依然无法成功， 记录任务执行失败，同时发出告警。 2.日志：类比消息中间件，处在不同线程之间的同一任务， 简单高效一点的做法可能是用traceId/requestId串联。 有些日志系统本身支持MDC/NDC功能，可以串联相关联的日志。</p>
+<p>——延申—— traceId/requestId 追踪id/请求id https://www.jianshu.com/p/599aa49ac79a 分布式跟踪，或分布式追踪。 每一个请求路由过来后，会经过多个业务系统并留下足迹， 并产生对各种Cache或DB的访问 跨进程/跨线程的场景，汇总收集并分析海量日志就显得尤为重要</p>
+<pre><code>要能做到追踪每个请求的完整调用链路，
+收集调用链路上每个服务的性能数据，计算性能数据和比对性能指标（SLA），
+甚至在更远的未来能够再反馈到服务治理中，那么这就是分布式跟踪的目标了
+
+twitter 的 zipkin 和
+淘宝的鹰眼就是类似的系统，它们都起源于 Google Dapper 论文，
+就像历史上 Hadoop 发源于 Google Map/Reduce 论文，
+HBase 源自 Google BigTable 论文一样。
+
+日志追踪系统
+    Google叫Dapper，
+    淘宝叫鹰眼，
+    Twitter叫ZipKin，
+    京东商城叫Hydra，
+    eBay叫Centralized Activity Logging (CAL)，
+    大众点评网叫CAT，
+    我们叫Tracing。
+这样的系统通常有几个设计目标：
+（1）低侵入性——作为非业务组件，应当尽可能少侵入或者无侵入其他业务系统，对于使用方透明，减少开发人员的负担；
+（2）灵活的应用策略——可以（最好随时）决定所收集数据的范围和粒度；
+（3）时效性——从数据的收集和产生，到数据计算和处理，再到最终展现，都要求尽可能快；
+（4）决策支持——这些数据是否能在决策支持层面发挥作用，特别是从 DevOps 的角度；
+（5）可视化才是王道。(绘制服务器性能图)
+
+
+调用链
+    淘宝 EagleEye 里称作 调用链
+    同一个时刻某一台服务器并行发起的网络调用有很多，
+    怎么识别这个调用是属于哪个调用链的呢？
+    可以在各个发起网络调用的中间件上下手
+
+数据埋点
+    EagleEye 的埋点逻辑（类似 Filter 的机制）
+    埋点为请求生成一个追踪id即TraceId
+
+    埋点逻辑为这个前端请求分配一个全局唯一的调用链ID。
+    这个ID在 EagleEye 里面被称为 TraceId
+
+追踪id放入上下文对象
+    TraceId 放在一个调用上下文对象里面，
+    而调用上下文对象会存储在 ThreadLocal 里面。
+
+调用上下文里还有一个ID非常重要，
+在 EagleEye 里面被称作 RpcId。
+
+远程调用id RPCid
+    RpcId 用于区分同一个调用链下的
+    多个网络调用的发生顺序和嵌套层次关系。
+    对于前端收到请求，生成的 RpcId 固定都是0
+    前端到服务端经过多个远程调用，
+    而调用顺序会从上下文中区出RPCid
+
+
+MDC/NDC 
+Log4j NDC MDC 区别及用法
+NDC（ Nested Diagnostic Context 嵌套 诊断 上下文）
+MDC（ Mapped Diagnostic Context 映射 诊断 上下文）
+是log4j种非常有用的两个类</code></pre>
+<p>在Java世界里，异常的出现让我们编写的程序运行起来更加的健壮， 同时为程序在调试、运行期间发生的一些意外情况，提供了补救机会； 即使遇到一些严重错误而无法弥补， 异常也会非常忠实的记录所发生的这一切。</p>
+<p>使用异常判断需要注意什么？ 1 不要推诿或延迟处理异常，就地解决最好， 并且需要实实在在的进行处理，而不是只捕捉，不动作。 2 一个函数尽管抛出了多个异常，但是只有一个异常可被传播到调用端。 最后被抛出的异常时唯一被调用端接收的异常，其他异常都会被吞没掩盖。 如果调用端要知道造成失败的最初原因，程序之中就绝不能掩盖任何异常。</p>
+<p>3 不要在finally代码块中处理返回值。</p>
+<p>4 按照我们程序员的惯性认知：当遇到return语句的时候，执行函数会立刻返回。 但是，在Java语言中，如果存在finally就会有例外。 除了return语句，try代码块中的break或continue语句也可能使控制权进入finally代码块。</p>
+<p>5 请勿在try代码块中调用return、break或continue语句。 万一无法避免，一定要确保finally的存在不会改变函数的返回值。</p>
+<p>6 函数返回值有两种类型：值类型与对象引用。 对于对象引用，要特别小心， 如果在finally代码块中对函数返回的对象成员属性进行了修改， 即使不在finally块中显式调用return语句，这个修改也会作用于返回值上。</p>
+<p>7 勿将异常用于控制流。</p>
+<p>8 如无必要，勿用异常。</p>
+<p>NoClassDefFoundError 和 ClassNOtFoundException的区别？ NoClassDefFoundError 是一个错误(Error)， 而 ClassNOtFoundException 是一个异常，</p>
+<p>在Java中对于错误和异常的处理是不同的， 我们可以从异常中恢复程序但却不应该尝试从错误中恢复程序。 ClassNotFoundException的产生原因：</p>
+<p>Java支持使用Class.forName方法来动态地加载类， 任意一个类的类名如果被作为参数传递给这个方法 都将导致该类被加载到JVM内存中， 如果这个类在类路径中没有被找到， 那么此时就会在运行时抛出ClassNotFoundException异常。</p>
+<p>解决该问题需要确保所需的类连同它依赖的包存在于类路径中， 常见问题在于类名书写错误。 另外还有一个导致ClassNotFoundException的原因就是： 当一个类已经某个类加载器加载到内存中了， 此时另一个类加载器又尝试着动态地从同一个包中加载这个类。 通过控制动态类加载过程，可以避免上述情况发生。</p>
+<p>NoClassDefFoundError产生的原因在于： 如果JVM或者ClassLoader实例尝试加载 （可以通过正常的方法调用，也可能是使用new来创建新的对象） 类的时候却找不到类的定义。 要查找的类在编译的时候是存在的，运行的时候却找不到了。 这个时候就会导致NoClassDefFoundError. 造成该问题的原因可能是打包过程漏掉了部分类， 或者jar包出现损坏或者篡改。 解决这个问题的办法是查找那些在开发期间存在于类路径下 但在运行期间却不在类路径下的类。</p>
+<p>executor 出来的异常和外层逻辑的的关联信息可以考虑 实例化线程池时候自定义threadfactory保留一部分， 比如线程名称前缀在日志里就蛮有用的， 而且扩展这个factry还有一个有用的地方在于可以处理那些未补货的异常， 比如调用的底层代码的运行时异常， 老师讲到的那个被很多框架尊崇的一切都该是运行时异常的哲学往往会让人多线程时候在这个点崴脚， 不过呢，这里也有一大招，就是可以“深思熟虑”一下，考虑使用个反模式， Runnable时候try一个大的throwable，然后catch里面记个log来避免这种意外中异常被吞的情况， 坏处是老师课程里提到的执行效率的代价，而且直接和工作代码耦合， 当然也可以中间加一个油漆工模式隔离下这个try块， 但就没了这个反模式的唯一好处：仅看run方法上下文就知道这东西是不是已经处理了， 之所以这里可以考虑违反通常对异常的最佳实践， 主要是要看你处理的问题规模和粒度， 这会影响最终你测量出来的性能的差异是不是足够明显， 和让你团队中绝大多数人快速理解排查问题哪一个你更在意， 本质上看，如果是团队开发，应该有一致的风格，我倾向于前者， 因为这个问题完全可以结合代码审查和静态代码检查工具来做， 形成一个统一的团队的代码风格，一般可能就不用java了哈</p>
+
+							</article>
+
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

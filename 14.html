@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>java 36</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+			<div id="wrapper" class="fade-in">
+					<div id="intro">
+						<h1>This is<br />
+						java </h1>
+						<p>article of java  <a href="http://blankcat.github.io/">@BlankCat</a> for <a href="http://blankcat.github.io/">Home page</a><br />
+						address:<a href="http://blankcat.github.io/">http://blankcat.github.io/</a>.</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+					<header id="header">
+						<a href="index.html" class="logo">BlankCat</a>
+					</header>
+						<!-- Nav -->
+					<nav id="nav" style="overflow-x: scroll;">
+						<ul class="links">
+							<li class="active"><a href="index.html">01</a></li>
+							<li><a href="02.html">02</a></li>
+							<li><a href="03.html">03</a></li>
+							<li><a href="04.html">04</a></li>
+							<li><a href="05.html">05</a></li>
+							<li><a href="06.html">06</a></li>
+							<li><a href="07.html">07</a></li>
+							<li><a href="08.html">08</a></li>
+							<li><a href="09.html">09</a></li>
+							<li><a href="10.html">10</a></li>
+							<li><a href="11.html">11</a></li>
+							<li><a href="12.html">12</li>
+							<li><a href="13.html">13</a></li>
+							<li><a href="14.html">14</a></li>
+							<li><a href="15.html">15</a></li>
+							<li><a href="16.html">16</a></li>
+							<li><a href="17.html">17</a></li>
+							<li><a href="18.html">18</a></li>
+							<li><a href="19.html">19</a></li>
+							<li><a href="20.html">20</a></li>
+							<li><a href="21.html">21</a></li>
+							<li><a href="22.html">22</a></li>
+							<li><a href="23.html">23</li>
+							<li><a href="24.html">24</a></li>
+							<li><a href="25.html">25</a></li>
+							<li><a href="26.html">26</a></li>
+							<li><a href="27.html">27</a></li>
+							<li><a href="28.html">28</a></li>
+							<li><a href="29.html">29</a></li>
+							<li><a href="30.html">30</a></li>
+							<li><a href="31.html">31</a></li>
+							<li><a href="32.html">32</a></li>
+							<li><a href="33.html">33</a></li>
+							<li><a href="34.html">34</a></li>
+							<li><a href="35.html">35</a></li>
+							<li><a href="36.html">36</a></li>
+							<li><a href="37.html">37</a></li>
+							<li><a href="38.html">38</a></li>
+							<li><a href="39.html">39</a></li>
+							<li><a href="40.html">40</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://github.com/BlankCat" class="icon fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+					<div id="main">
+							<article class="post featured">
+								<p>14-设计模式 spring等框架中的那些设计模式 业务代码，XXFacade，外观模式解决什么问题？使用什么场景？</p>
+<p>门面模式形象上来讲就是在原系统之前放置了一个新的代理对象， 只能通过该对象才能使用该系统， 不再允许其它方式访问该系统。 该代理对象封装了访问原系统的所有规则和接口方法， 提供的API接口较之使用原系统会更加的简单。 举例: JUnitCore是JUnit类的 Facade模式的实现类， 外部使用该代理对象与JUnit进行统一交互，驱动执行测试代码。</p>
+<p>使用场景: 当我们希望封装或隐藏原系统； 当我们使用原系统的功能并希望增加一些新的功能； 编写新类的成本远小于所有人学会使用或者未来维护原系统所需的成本；</p>
+<p>缺点: 违反了开闭原则。如有扩展，只能直接修改代理对象。 回复 不错</p>
+<p>为什么我去查Runtime的源码，currentRuntime没有被final修饰呢？ 回复 什么版本？我这是最新的</p>
+<p>结合流行的开源框架，或者自己的项目学设计模式是很好的办法， 生学很容易看不懂学不下去，xxxfascade是门面模式， 为复杂的逻辑提供简单的借口，设计模式学的时候还能明白， 但是用的时候就不知道该怎么用了，我们怎么在项目中使用设计模式呢？ 回复 不必为了模式而用，优先解决开发、维护中的痛点</p>
+<p>Spring 内部的asm 模块 用到了访问者模式 ASM是小巧轻便的 Java 字节码操控框架 ， 它能方便地生成和改造 Java 代码。 Hibernate和 Spring在底层都用到了 ASM(CgLib底层用的 asm)；</p>
+<p>公司项目是一个基于spingboot、mybatis开发的web后端管理项目。 现在的问题是 不同角色登录到系统看到的模块和模块里面的数据是不一样的， 有时虽然看到的模块一样，但是由于角色不一样，所以显示的数据是不一样，在这样的情况下， 会经常在service层方法里面判断角色然后改变mapper的数据操作条件或调用mapper的不同方法。 由于在service层频繁的判断角色感觉很不雅，新增角色就要加判断，哎，感觉可以用策略设计模式，可是不知道怎么具体设计。</p>
+<p>在没用facade之前，为了完成某个功能需要调用各子系统的各方法进行组合才能完成， 用了facade之后相当于把多个方法调用聚合成了一个方法，方便用户调用。</p>
+<p>我理解Facada模式，微服务应用场景，如： Nginx对系统子服务进行管理和IP反向代理，提供统一的服务， 就是屏蔽外部系统对内部服务的具体实现，以及各微服务的部署虚拟机和URL。 再者，容器Docker技术，我认为这是Facada模式， 通过镜像把应用相关的组件和配置都预置好， 发布这个服务时，直接启动容器，用户不用关心里面的任何细节。</p>
+<p>外观模式（Facade Pattern）隐藏系统的复杂性， 并向客户端提供了一个客户端可以访问系统的接口。 它向现有的系统添加一个接口，来隐藏系统的复杂性。 这种模式涉及到一个单一的类，该类提供了客户端请求的简化方法和对现有系统类方法的委托调用。</p>
+<p>意图： 为子系统中的一组接口提供一个一致的界面， 外观模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。 主要解决： 降低访问复杂系统的内部子系统时的复杂度，简化客户端与之的接口。 何时使用： 1、客户端不需要知道系统内部的复杂联系，整个系统只需提供一个“接待员”即可。 2、定义系统的入口。 如何解决： 客户端不与系统耦合，外观类与系统耦合。 关键代码： 在客户端和复杂系统之间再加一层，这一层将调用顺序、依赖关系等处理好。 应用实例： 1、去医院看病，可能要去挂号、门诊、划价、取药，让患者或患者家属觉得很复杂，如果有提供接待人员，只让接待人员来处理，就很方便。 2、JAVA 的三层开发模式。 优点： 1、减少系统相互依赖。 2、提高灵活性。 3、提高了安全性。 缺点： 不符合开闭原则，如果要改东西很麻烦，继承重写都不合适。 使用场景： 1、为复杂的模块或子系统提供外界访问的模块。 2、子系统相对独立。 3、预防低水平人员带来的风险。 注意事项： 在层次化结构中，可以使用外观模式定义系统中每一层的入口。 回复 不错，业务系统多见</p>
+<p>Facade（外观模式） 接口隔离模式。处理组件中外部客户程序和组件中各种复杂的子系统高耦合情况， 定义一个高层接口，为子系统中的一组接口提供一个一致（稳定）的界面，使得更简单的使用。 facade简化整个组件系统的接口，同时子系统的任何变化都不会影响到facade接口。</p>
+<p>有一个更简单的称呼，门面模式，打个比方说，你去商店，你只需要告诉店员，你需要什么， 至于商店中复杂的采购系统，库存系统，收银系统一概对你不可见。</p>
+<p>在经常使用的hibernate，当我们想插入一条用户信息， facade接口中insert(User user)，我们只要传递User对象， 至于背后的操作对外部调用是不可见。</p>
+<p>facade模式是从架构的层次去看整个系统，而是一两个类之间单纯解耦。</p>
+<p>外观模式为子系统中一组接口提供一个统一访问的接口， 降低了客户端与子系统之间的耦合，简化了系统复杂度。 缺点是违反了开闭原则。 适用于为一系列复杂的子系统提供一个友好简单的入口，将子系统与客户端解偶。 公司基础paas平台用到了外观模式，具体是定义一个ServiceFacade，然后通过继承众多xxService, 对外提供子xxService的服务。 回复 业务开发很普遍</p>
+<p>facade模式 主要屏蔽系统内部细节实现， 通过facade模式封装统一的接口 提供给外部调用着.有一个优势 ， 当内部系统做变更 优化时，这对外部调用者来说是透明的， 一定程度上降低了系统间耦合性…个人理解</p>
+<p>在双重锁检验的实现单例模式的方式中，类变量的声明有必要加上final 吗？ 我的jdk版本是jdk1.8.0_102，RunTime的声明是private static 的</p>
+<p>门面模式，为了减少对子线实现的依赖， 将子类实现统一封装。实现调用封装类。达到所谓的“封装交互，简化调用”</p>
+<p>通过封装的方式，对外屏蔽内部复杂业务逻辑，实现使用方与具体实现的分离。门面模式</p>
+
+								
+							</article>
+
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

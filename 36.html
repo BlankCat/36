@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>java 36</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+			<div id="wrapper" class="fade-in">
+					<div id="intro">
+						<h1>This is<br />
+						java </h1>
+						<p>article of java  <a href="http://blankcat.github.io/">@BlankCat</a> for <a href="http://blankcat.github.io/">Home page</a><br />
+						address:<a href="http://blankcat.github.io/">http://blankcat.github.io/</a>.</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+					<header id="header">
+						<a href="index.html" class="logo">BlankCat</a>
+					</header>
+						<!-- Nav -->
+					<nav id="nav" style="overflow-x: scroll;">
+						<ul class="links">
+							<li class="active"><a href="index.html">01</a></li>
+							<li><a href="02.html">02</a></li>
+							<li><a href="03.html">03</a></li>
+							<li><a href="04.html">04</a></li>
+							<li><a href="05.html">05</a></li>
+							<li><a href="06.html">06</a></li>
+							<li><a href="07.html">07</a></li>
+							<li><a href="08.html">08</a></li>
+							<li><a href="09.html">09</a></li>
+							<li><a href="10.html">10</a></li>
+							<li><a href="11.html">11</a></li>
+							<li><a href="12.html">12</li>
+							<li><a href="13.html">13</a></li>
+							<li><a href="14.html">14</a></li>
+							<li><a href="15.html">15</a></li>
+							<li><a href="16.html">16</a></li>
+							<li><a href="17.html">17</a></li>
+							<li><a href="18.html">18</a></li>
+							<li><a href="19.html">19</a></li>
+							<li><a href="20.html">20</a></li>
+							<li><a href="21.html">21</a></li>
+							<li><a href="22.html">22</a></li>
+							<li><a href="23.html">23</li>
+							<li><a href="24.html">24</a></li>
+							<li><a href="25.html">25</a></li>
+							<li><a href="26.html">26</a></li>
+							<li><a href="27.html">27</a></li>
+							<li><a href="28.html">28</a></li>
+							<li><a href="29.html">29</a></li>
+							<li><a href="30.html">30</a></li>
+							<li><a href="31.html">31</a></li>
+							<li><a href="32.html">32</a></li>
+							<li><a href="33.html">33</a></li>
+							<li><a href="34.html">34</a></li>
+							<li><a href="35.html">35</a></li>
+							<li><a href="36.html">36</a></li>
+							<li><a href="37.html">37</a></li>
+							<li><a href="38.html">38</a></li>
+							<li><a href="39.html">39</a></li>
+							<li><a href="40.html">40</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://github.com/BlankCat" class="icon fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+					<div id="main">
+							<article class="post featured">
+								
+								<p>36-mysql支持的事务隔离级别-悲观锁和乐观锁的原理和应用场景 mybatis 分哪几层？每层都有那些主要模块？</p>
+<p>mybatis架构自下而上分为 基础支撑层、 数据处理层、 API接口层这三层。</p>
+<p>基础支撑层， 主要是用来做连接管理、事务管理、配置加载、缓存管理等最基础组件，为上层提供最基础的支撑。 数据处理层， 主要是用来做参数映射、sql解析、sql执行、结果映射等处理，可以理解为请求到达，完成一次数据库操作的流程。 API接口层， 主要对外提供API，提供诸如数据的增删改查、获取配置等接口。</p>
+<p>乐观锁 悲观锁 脏读 幻读 不可重复读 CAS MVCC 隔离级别 锁队列 2PC TCC</p>
+<p>MVCC到底有没有加锁？如何应用的？ Multi-Version Concurrency Control 多版本并发控制，MVCC 是一种并发控制的方法， 一般在数据库管理系统中，实现对数据库的并发访问；在编程语言中实现事务内存</p>
+<p>关于“可以简单认为MySQL在可重复读级别不会出现幻象读”没能理解， 个人认为正是因为可重复读，即每个事务保存了快照，才导致了幻读的现象。 想要解决幻读，只能加共享锁或者排它锁吧。 可能是因为知识浅导致无法理解，还望方便的话，您能点拨一下，感谢</p>
+<p>对于mysql四个隔离级别中的不可重复读的最后一句不是很理解。 不可重复读应该是不能避免幻读， 为什么说是不产生幻读呢？</p>
+<p>mysql inndb默认可重复读级别，不会出现幻读。 mybatis架构自下而上分为 基础支撑层、 数据处理层、 API接口层这三层。</p>
+<p>基础支撑层，主要是用来做连接管理、事务管理、配置加载、缓存管理等最基础组件，为上层提供最基础的支撑。 数据处理层，主要是用来做参数映射、sql解析、sql执行、结果映射等处理，可以理解为请求到达，完成一次数据库操作的流程。 API接口层，主要对外提供API，提供诸如数据的增删改查、获取配置等接口。</p>
+<p>gap间隙锁 mysql，可重复读的隔离级别，也在有gap间隙锁吧？</p>
+<p>mysql（innodb）的可重复读隔离级别下， 为什么可以认为不会出现幻像读呢? 从技术角度实现，mysq用mvcc做了snapshot， 如果是locking read文档明确指出了会做区间锁定</p>
+<p>0.sql工厂-主要设定数据库连接信息 1.接口层-主要有mapper接口用于对外提供具体的sql执行方法 2.xml文件-有具体的sql实现语句， 以及数据库字段对应java类字段的映射关系， 每个mapper对应每个数据库表</p>
+<p>读未提交read uncommitted 读已提交read committed 可重复读repeatable serializable</p>
+<p>1、脏读： 事务A读取了事务B更新的数据，然后B回滚操作，那么A读取到的数据是脏数据 2、不可重复读：事务A读到两次不同的结果 事务 A 多次读取同一数据，事务 B 在事务A多次读取的过程中，对数据作了更新并提交， 导致事务A多次读取同一数据时，结果 不一致。 3、幻读：管理员A更新操作结果发现有数据没有更新 系统管理员A将数据库中所有学生的成绩从具体分数改为ABCDE等级， 但是系统管理员B就在这个时候插入了一条具体分数的记录， 当系统管理员A改结束后发现还有一条记录没有改过来， 就好像发生了幻觉一样，这就叫幻读。</p>
+<p>事务隔离级别 脏读 不可重复读 幻读 读未提交（read-uncommitted） 是 是 是 不可重复读（read-committed） 否 是 是 可重复读（repeatable-read） 否 否 是 串行化（serializable） 否 否 否</p>
+
+								
+								
+							</article>
+
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

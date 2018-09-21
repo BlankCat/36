@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>java 36</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+			<div id="wrapper" class="fade-in">
+					<div id="intro">
+						<h1>This is<br />
+						java </h1>
+						<p>article of java  <a href="http://blankcat.github.io/">@BlankCat</a> for <a href="http://blankcat.github.io/">Home page</a><br />
+						address:<a href="http://blankcat.github.io/">http://blankcat.github.io/</a>.</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+					<header id="header">
+						<a href="index.html" class="logo">BlankCat</a>
+					</header>
+						<!-- Nav -->
+					<nav id="nav" style="overflow-x: scroll;">
+						<ul class="links">
+							<li class="active"><a href="index.html">01</a></li>
+							<li><a href="02.html">02</a></li>
+							<li><a href="03.html">03</a></li>
+							<li><a href="04.html">04</a></li>
+							<li><a href="05.html">05</a></li>
+							<li><a href="06.html">06</a></li>
+							<li><a href="07.html">07</a></li>
+							<li><a href="08.html">08</a></li>
+							<li><a href="09.html">09</a></li>
+							<li><a href="10.html">10</a></li>
+							<li><a href="11.html">11</a></li>
+							<li><a href="12.html">12</li>
+							<li><a href="13.html">13</a></li>
+							<li><a href="14.html">14</a></li>
+							<li><a href="15.html">15</a></li>
+							<li><a href="16.html">16</a></li>
+							<li><a href="17.html">17</a></li>
+							<li><a href="18.html">18</a></li>
+							<li><a href="19.html">19</a></li>
+							<li><a href="20.html">20</a></li>
+							<li><a href="21.html">21</a></li>
+							<li><a href="22.html">22</a></li>
+							<li><a href="23.html">23</li>
+							<li><a href="24.html">24</a></li>
+							<li><a href="25.html">25</a></li>
+							<li><a href="26.html">26</a></li>
+							<li><a href="27.html">27</a></li>
+							<li><a href="28.html">28</a></li>
+							<li><a href="29.html">29</a></li>
+							<li><a href="30.html">30</a></li>
+							<li><a href="31.html">31</a></li>
+							<li><a href="32.html">32</a></li>
+							<li><a href="33.html">33</a></li>
+							<li><a href="34.html">34</a></li>
+							<li><a href="35.html">35</a></li>
+							<li><a href="36.html">36</a></li>
+							<li><a href="37.html">37</a></li>
+							<li><a href="38.html">38</a></li>
+							<li><a href="39.html">39</a></li>
+							<li><a href="40.html">40</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://github.com/BlankCat" class="icon fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+					<div id="main">
+							<article class="post featured">
+								
+								<p>10-如何保证线程安全-concurrenthashmap 如何实现高效线程安全 集合框架里面线程安全的类？Vector,Stack在性能方面很差 java并发包java.util.concurrent concurrenthashmap使用的典型场景</p>
+<p>1.8以后的锁的颗粒度，是加在链表头上的，这个是个思路上的突破。 回复 是的</p>
+<p>1.7put加锁 通过分段加锁segment，一个hashmap里有若干个segment， 每个segment里有若干个桶， 桶里存放K-V形式的链表， put数据时通过key哈希得到该元素要添加到的segment， 然后对 segment 进行加锁， 然后在哈希， 计算得到给元素要添加到的桶， 然后遍历桶中的链表， 替换或新增节点到桶中size 分段计算两次，两次结果相同则返回，否则对所以段加锁重新计算</p>
+<p>1.8put CAS 加锁 1.8中不依赖与segment加锁，segment数量与桶数量一致； 首先判断容器是否为空，为空则进行初始化利用volatile的sizeCtl作为互斥手段， 如果发现竞争性的初始化，就暂停在那里，等待条件恢复， 否则利用CAS设置排他标志（U.compareAndSwapInt(this, SIZECTL, sc, -1)）;否则重试 对key hash计算得到该key存放的桶位置，判断该桶是否为空，为空则利用CAS设置新节点 否则使用synchronize加锁，遍历桶中数据，替换或新增加点到桶中 最后判断是否需要转为红黑树，转换之前判断是否需要扩容</p>
+<p>最近用ConcurrentHashMap的场景是，由于系统是一个公共服务，全程异步处理。 最后一环节需要http rest主动响应接入系统，于是为了定制化需求， 利用netty写了一版异步http clinet。其在缓存tcp链接时用到了。 看到下面有一位朋友说起了自旋锁和偏向锁。 自旋锁个人理解的是cas的一种应用方式。并发包中的原子类是典型的应用。 偏向锁个人理解的是获取锁的优化。在ReentrantLock中用于实现已获取完锁的的线程重入问题。 不知道理解的是否有误差。欢迎指正探讨。谢谢 回复 正确， 偏向锁，侧重是低竞争场景的优化，去掉可能不必要的同步</p>
+<p>无锁的执行者-CAS CAS CAS的全称是Compare And Swap 即比较交换，其算法核心思想如下 执行函数：CAS(V,E,N) 其包含3个参数 V表示要更新的变量 E表示预期值 N表示新值</p>
+<p>同步包装类比较低效，不太适合高并发的场景，在list接口的实现类中。 在高并发的场景下，选择哪种实现类比较好？ 因为ArrayList是线程不安全的，同步包装类又很低效， CopyonwriteArrayList又是以快照的形式来实现的，在频繁写入数据的时候，其实也很低效，那这个类型该怎么选择比较好？ 回复 目前并发list好像就那一个，我觉得不必拘泥于list， 不还有queue之类，看场景需要的真是list吗</p>
+<p>之前用JavaFX做一个客户端IM工具的时候， 我将拉来的未被读取的用户聊天信息用ConcurrentHashMap存储（同时异步存储到Sqlite）， Key存放用户id，Value放未读取的聊天消息列表。 因为我考虑到存消息和读消息是由两个线程并发处理的，这两个线程共同操作一个ConcurrentHashMap。 可能是我没处理好，</p>
+<p>看8的concurenthashmap源码感觉挺困难，网上的博文帮助也不大，尤其是扩容这部分（似乎文章中没提） 求问杨大有没有什么窍门，或者有什么启发性的paper或文章？ 可以泛化成，长期对lock free实现多个状态修改的问题比较困惑，希望得到启发 回复 本文尽量梳理了相对比较容易理解的部分； 扩容细节我觉得是个加分项，不是每个人都会在乎那么深入； 窍门，可以考虑画图辅助理解，我是比较笨的类型，除了死磕，不会太多窍门……</p>
+<p>ConcurrentHashMap 的实现是通过重试机制（RETRIES_BEFORE_LOCK，指定重试次数 2），来试图获得可靠值。 如果没有监控到发生变化（通过对比 Segment.modCount），就直接返回，否则获取锁进行操作。&quot; 可以看出, 在高并发的情况下, “size()” 方法只是返回“近似值”, 而我的问题是: 既然只是一个近似值, 为啥要用这种“重试,分段锁” 的复杂做法去计算这个值? 直接在不加锁的情况下返回segment 的size 岂不是更简单? 我能理解jdk开发者想尽一切努力在高性能地返回最精确的数值, 但这个“精确” 度无法量化啊, 对于调用方来说,这个值依然是不可靠的啊. 所以, 在我看来,这种做法收益很小(可能是我也比较懒吧), 或者有些设计上的要点我没有领悟出来, 希望老师指点一下. 回复 这个是在代价可接受情况下，尽量准确，就像含金量90%和99.9%，99.999%，还是有区别的，虽然不是百分百</p>
+<p>在构造的时候，Segment 的数量由所谓的 concurrentcyLevel 决定， 默认是 16！并发数不是越多越好吗？ 回复 都是有代价的，取个折衷</p>
+<p>重入锁？ JAVA可重入锁与不可重入锁 所谓重入锁，指的是以线程为单位，当一个线程获取对象锁之后， 这个线程可以再次获取本对象上的锁，而其他的线程是不可以的。 synchronized 和 ReentrantLock 都是可重入锁。</p>
+<pre><code>可重入锁的意义在于防止死锁。
+
+实现原理实现是通过为每个锁关联一个请求计数器和一个占有它的线程。
+当计数为0时，认为锁是未被占有的；
+线程请求一个未被占有的锁时，JVM将记录锁的占有者，并且将请求计数器置为1 。
+
+如果同一个线程再次请求这个锁，计数将递增；
+每次占用线程退出同步块，计数器值将递减。直到计数器为0,锁被释放。
+关于父类和子类的锁的重入:子类覆写了父类的synchonized方法，
+然后调用父类中的方法，此时如果没有重入的锁，那么这段代码将产生死锁（很好理解吧）。</code></pre>
+<p>ConcurrentHashMap和HashMap一样，不过是将buckets换成了segment， 然后加锁方式从整map，下沉到segment（buckets）上，这样简单理解正确么？ 回复 有一定道理，但seg和buck范围不完全对等</p>
+<p>rpc调用内部，客户端会记录每次请求的unique id， 用于匹配返回的数据应该响应哪个请求。高并发情况下， 应该使用concurrenthashmap做这种id到回调的记录。</p>
+<p>jdk7和8的区别感觉就是加锁不一样了，其他的没看懂。 老师，synchronized和lock是不是都是在类字节码种携带自旋锁和偏向锁啊？ 他两底层区别是啥呢？我知道lock里面维护了一个双向链表 回复 我列出来的区别不止吧； 存在锁升降级的问题，后面有章节介绍</p>
+
+							</article>
+
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

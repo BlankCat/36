@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>java 36</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+			<div id="wrapper" class="fade-in">
+					<div id="intro">
+						<h1>This is<br />
+						java </h1>
+						<p>article of java  <a href="http://blankcat.github.io/">@BlankCat</a> for <a href="http://blankcat.github.io/">Home page</a><br />
+						address:<a href="http://blankcat.github.io/">http://blankcat.github.io/</a>.</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+					<header id="header">
+						<a href="index.html" class="logo">BlankCat</a>
+					</header>
+						<!-- Nav -->
+					<nav id="nav" style="overflow-x: scroll;">
+						<ul class="links">
+							<li class="active"><a href="index.html">01</a></li>
+							<li><a href="02.html">02</a></li>
+							<li><a href="03.html">03</a></li>
+							<li><a href="04.html">04</a></li>
+							<li><a href="05.html">05</a></li>
+							<li><a href="06.html">06</a></li>
+							<li><a href="07.html">07</a></li>
+							<li><a href="08.html">08</a></li>
+							<li><a href="09.html">09</a></li>
+							<li><a href="10.html">10</a></li>
+							<li><a href="11.html">11</a></li>
+							<li><a href="12.html">12</li>
+							<li><a href="13.html">13</a></li>
+							<li><a href="14.html">14</a></li>
+							<li><a href="15.html">15</a></li>
+							<li><a href="16.html">16</a></li>
+							<li><a href="17.html">17</a></li>
+							<li><a href="18.html">18</a></li>
+							<li><a href="19.html">19</a></li>
+							<li><a href="20.html">20</a></li>
+							<li><a href="21.html">21</a></li>
+							<li><a href="22.html">22</a></li>
+							<li><a href="23.html">23</li>
+							<li><a href="24.html">24</a></li>
+							<li><a href="25.html">25</a></li>
+							<li><a href="26.html">26</a></li>
+							<li><a href="27.html">27</a></li>
+							<li><a href="28.html">28</a></li>
+							<li><a href="29.html">29</a></li>
+							<li><a href="30.html">30</a></li>
+							<li><a href="31.html">31</a></li>
+							<li><a href="32.html">32</a></li>
+							<li><a href="33.html">33</a></li>
+							<li><a href="34.html">34</a></li>
+							<li><a href="35.html">35</a></li>
+							<li><a href="36.html">36</a></li>
+							<li><a href="37.html">37</a></li>
+							<li><a href="38.html">38</a></li>
+							<li><a href="39.html">39</a></li>
+							<li><a href="40.html">40</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://github.com/BlankCat" class="icon fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+					<div id="main">
+							<article class="post featured">
+								
+								<p>05-string-stringBuffer-stringBuilder-区别？ 字符串编码问题？</p>
+<p>jdk1.8中，string是标准的不可变类，但其hash值没有用final修饰， 其hash值计算是在第一次调用hashcode方法时计算，但方法没有加锁， 变量也没用volatile关键字修饰就无法保证其可见性。 当有多个线程调用的时候，hash值可能会被计算多次， 虽然结果是一样的，但jdk的作者为什么不将其优化一下呢？</p>
+<p>这些“优化”在通用场景可能变成持续的成本，volatile read是有明显开销的； 如果冲突并不多见，read才是更普遍的，简单的cache是更高效的</p>
+<p> </p>
+<p>今日String/StringBuffer/StringBuilder心得: 1 String (1) String的创建机理 由于String在Java世界中使用过于频繁，Java为了避免在一个系统中产生大量的String对象， 引入了字符串常量池。 其运行机制是： 创建一个字符串时，首先检查池中是否有值相同的字符串对象， 如果有则不需要创建直接从池中刚查找到的对象引用； 如果没有则新建字符串对象，返回对象引用，并且将新创建的对象放入池中。</p>
+<pre><code>但是，通过new方法创建的String对象是不检查字符串池的，
+而是直接在堆区或栈区创建一个新的对象，
+也不会把对象放入池中。
+上述原则只适用于通过直接量给String对象引用赋值的情况。
+
+举例：String str1 = &quot;123&quot;; //通过直接量赋值方式，放入字符串常量池
+String str2 = new String(“123”);//通过new方式赋值方式，不放入字符串常量池
+
+注意：String提供了inter()方法。
+调用该方法时，如果常量池中包括了一个等于此String对象的字符串（由equals方法确定），
+则返回池中的字符串。否则，将此String对象添加到池中，并且返回此池中对象的引用。</code></pre>
+<ol start="2" type="1">
+<li><p>String的特性 [A] 不可变。 是指String对象一旦生成，则不能再对它进行改变。 不可变的主要作用在于当一个对象需要被多线程共享， 并且访问频繁时，可以省略同步和锁等待的时间， 从而大幅度提高系统性能。 不可变模式是一个可以提高多线程程序的性能， 降低多线程程序复杂度的设计模式。</p>
+<p>[B] 针对常量池的优化。 当2个String对象拥有相同的值时， 他们只引用常量池中的同一个拷贝。 当同一个字符串反复出现时， 这个技术可以大幅度节省内存空间。</p></li>
+</ol>
+<p>2 StringBuffer/StringBuilder StringBuffer和StringBuilder都实现了AbstractStringBuilder抽象类， 拥有几乎一致对外提供的调用接口； 其底层在内存中的存储方式与String相同， 都是以一个有序的字符序列（char类型的数组）进行存储， 不同点是StringBuffer/StringBuilder对象的值是可以改变的，并且值改变以后， 对象引用不会发生改变; 【字符串数组重新申请过程？】 两者对象在构造过程中，首先按照默认大小申请一个字符数组， 由于会不断加入新数据，当超过默认大小后， 会创建一个更大的数组， 并将原先的数组内容复制过来，再丢弃旧的数组。 因此，对于较大对象的扩容会涉及大量的内存复制操作， 如果能够预先评估大小，可提升性能。</p>
+<p>唯一需要注意的是： StringBuffer是线程安全的， 但是StringBuilder是线程不安全的。 可参看Java标准类库的源代码， StringBuffer类中方法定义前面都会有synchronize关键字。 为此，StringBuffer的性能要远低于StringBuilder。</p>
+<p>3 应用场景<br />
+[A]在字符串内容不经常发生变化的业务场景优先使用String类。 例如：常量声明、少量的字符串拼接操作等。 如果有大量的字符串内容拼接，避免使用String与String之间的“+”操作， 因为这样会产生大量无用的中间对象， 耗费空间且执行效率低下（新建对象、回收对象花费大量时间）。</p>
+<p>[B]在频繁进行字符串的运算（如拼接、替换、删除等）， 并且运行在多线程环境下，建议使用StringBuffer， 例如XML解析、HTTP参数解析与封装。</p>
+<p>[C]在频繁进行字符串的运算（如拼接、替换、删除等）， 并且运行在单线程环境下，建议使用StringBuilder， 例如SQL语句拼装、JSON封装等。</p>
+<p>jvm编码 file.encoding参数 系统编码 操作系统编码 dos 查看控制台编码 getBytes和String相关的转换时根据业务需要建议指定编码方式， 如果不指定则看看JVM参数里有没有指定file.encoding参数， 如果JVM没有指定，那使用的默认编码就是运行的操作系统环境的编码了， 那这个编码就变得不确定了。常见的编码iso8859-1是单字节编码，UTF-8是变长的编码。</p>
+<p></p>
+<p>4 String是immutable，在security, Cache，Thread Safe等方面都有很好的体现。 Security: 传参的时候我们很多地方使用String参数，可以保证参数不会被改变，比如数据库连接参数url等，从而保证数据库连接安全。 Cache: 因为创建String前先去Constant Pool里面查看是否已经存在此字符串， 如果已经存在，就把该字符串的地址引用赋给字符变量；如果没有， 则在Constant Pool创建字符串，并将字符串引用赋给字符串变量。 所以存在多个引用指向同一个字符串对象，利用缓存有助提高内存开销。 Thread Safe: 因为String是immutable， 所以它是Automatically thread safe.</p>
+<p>String s = new String(“abc”) 创建了几个对象？ 答案1：在字符串常量池中查找有没有“abc”，有则作为参数，就是创建了一个对象； 没有则在常量池中创建，然后返回引用，那就是创建了两个对象。 答案2：直接在堆中创建一个新的对象。不检查字符串常量池，也不会把对象放入池中。 网上正确答案貌似是两个，求指教到底是哪个！ 第一种可以写成String a = “abc”;String s = new String(a) ,那么第一种解释说得通， String a = “abc”会在常量池创建“abc”。 但是string类的intern()是在字符串常量池中查找该字符串，有就返回，没有就创建 ，如果第一种解释说得通，那这个方法就废了。</p>
+<p></p>
+<p>思考题里的平台默认编码，平台指的是JVM所在的操作系统，还是指语言平台本身呢？ 环境编码</p>
+<p>char 数组的实现，字符串的最大长度就是数组本身的长度限制， 但是替换成 byte 数组，同样数组长度下，存储能力是退化了一倍的！ 怎么理解呢？ 举个例子呗 一个char两个byte，注意下各个类型宽度</p>
+<p>老师，这章学习到了 Java 8 以后，字符串常量池被移到了堆中， 那么，如果通过 String.intern() 产生了大量的字符串常量， JVM 会对它们进行垃圾回收吗？ 会  </p>
+<p>经过验证new String时，不会再常量池中创建对象。 嗯，重要的不是结论，而是如何得到结论</p>
+<p></p>
+<p>String str1 =“abc”; String str2 = new String(“abc”); 理论上,str1是放入字符串长量池，str2是新增一个对象，新开辟一块地址。 但是通过代码调试，他们的HashCode一样，就说明他们是引用同一个地址。 请帮忙分析一下。</p>
+<p>据我所知，字符串hashCode是取决于内容，而不是地址； 对象是否同一个用==判断； 一定要区分，==，equals，hashCode，搜下或者看看书吧</p>
+<p>java中equals，hashcode和==的区别 https://www.cnblogs.com/skywang12345/p/3324958.html 1.基本数据类型，也称原始数据类型 byte,short,char,int,long,float,double,boolean<br />
+他们之间的比较，应用双等号（==）,比较的是他们的值。</p>
+<p>2.引用类型(类、接口、数组)<br />
+当他们用（==）进行比较的时候，比较的是他们在内存中的存放地址， 所以，除非是同一个new出来的对象，他们的比较后的结果为true，否则比较后结果为false。 对象是放在堆中的，栈中存放的是对象的引用（地址）。 由此可见’==’是对栈中的值进行比较的。如果要比较堆中对象的内容是否相同， 那么就要重写equals方法了。</p>
+<p>2、equals 1、默认情况（没有覆盖equals方法）下equals方法都是调用Object类的equals方法， 而Object的equals方法主要用于判断对象的内存地址引用是不是同一个地址（是不是同一个对象）。 1 自反性：对任意引用值X，x.equals(x)的返回值一定为true. 2 对称性：对于任何引用值x,y,当且仅当y.equals(x)返回值为true时，x.equals(y)的返回值一定为true; 3 传递性：如果x.equals(y)=true, y.equals(z)=true,则x.equals(z)=true 4 一致性：如果参与比较的对象没任何改变，则对象比较的结果也不应该有任何改变 5 非空性：任何非空的引用值X，x.equals(null)的返回值一定为false</p>
+<p>3、hashCode 作用 它实际上是返回一个int整数。这个哈希码的作用是确定该对象在哈希表中的索引位置</p>
+<p>4、eqauls方法和hashCode方法关系 1、如果两个对象equals，Java运行时环境会认为他们的hashcode一定相等。 2、如果两个对象不equals，他们的hashcode有可能相等。 3、如果两个对象hashcode相等，他们不一定equals。 4、如果两个对象hashcode不相等，他们一定不equals。</p>
+<p>5、为什么覆盖equals时总要覆盖hashCode 如果不这样做的话，就会违反Object.hashCode的通用约定， 从而导致该类无法结合所有基于散列的集合一起正常运作， 这样的集合包括HashMap、HashSet和Hashtable。 </p>
+<p>简单的拼接+就行了，只有相对复杂的，比如需要优化下buffer大小，才有必要考虑。 在 JDK 8 中，字符串拼接操作会自动被 javac 转换为 StringBuilder 操作， 而在 JDK 9 里面则是因为 Java 9 为了更加统一字符串操作优化，提供了 StringConcatFactory，作为一个统一的入口。 javac 自动生成的代码，虽然未必是最优化的，但普通场景也足够了。</p>
+<p>在 Java 9 中，我们引入了 Compact Strings 的设计，对字符串进行了大刀阔斧的改进。将数据存储方式从 char 数组， 改变为一个 byte 数组加上一个标识编码的所谓 coder，并且将相关字符串操作类都进行了修改。 在极端情况下，字符串也出现了一些能力退化，比如最大字符串的大小。你可以思考下，原来 char 数组的实现， 字符串的最大长度就是数组本身的长度限制，但是替换成 byte 数组，同样数组长度下，存储能力是退化了一倍的！ 还好这是存在于理论中的极限，还没有发现现实应用受此影响。</p>
+<p>在通用的性能测试和产品实验中，我们能非常明显地看到紧凑字符串带来的优势，即更小的内存占用、更快的操作速度。</p>
+<p>你好，能否讲解一下 StringConcatFactory的内在原理，</p>
+
+							</article>
+
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

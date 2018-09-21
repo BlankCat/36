@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>java 36</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+			<div id="wrapper" class="fade-in">
+					<div id="intro">
+						<h1>This is<br />
+						java </h1>
+						<p>article of java  <a href="http://blankcat.github.io/">@BlankCat</a> for <a href="http://blankcat.github.io/">Home page</a><br />
+						address:<a href="http://blankcat.github.io/">http://blankcat.github.io/</a>.</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+					<header id="header">
+						<a href="index.html" class="logo">BlankCat</a>
+					</header>
+						<!-- Nav -->
+					<nav id="nav" style="overflow-x: scroll;">
+						<ul class="links">
+							<li class="active"><a href="index.html">01</a></li>
+							<li><a href="02.html">02</a></li>
+							<li><a href="03.html">03</a></li>
+							<li><a href="04.html">04</a></li>
+							<li><a href="05.html">05</a></li>
+							<li><a href="06.html">06</a></li>
+							<li><a href="07.html">07</a></li>
+							<li><a href="08.html">08</a></li>
+							<li><a href="09.html">09</a></li>
+							<li><a href="10.html">10</a></li>
+							<li><a href="11.html">11</a></li>
+							<li><a href="12.html">12</li>
+							<li><a href="13.html">13</a></li>
+							<li><a href="14.html">14</a></li>
+							<li><a href="15.html">15</a></li>
+							<li><a href="16.html">16</a></li>
+							<li><a href="17.html">17</a></li>
+							<li><a href="18.html">18</a></li>
+							<li><a href="19.html">19</a></li>
+							<li><a href="20.html">20</a></li>
+							<li><a href="21.html">21</a></li>
+							<li><a href="22.html">22</a></li>
+							<li><a href="23.html">23</li>
+							<li><a href="24.html">24</a></li>
+							<li><a href="25.html">25</a></li>
+							<li><a href="26.html">26</a></li>
+							<li><a href="27.html">27</a></li>
+							<li><a href="28.html">28</a></li>
+							<li><a href="29.html">29</a></li>
+							<li><a href="30.html">30</a></li>
+							<li><a href="31.html">31</a></li>
+							<li><a href="32.html">32</a></li>
+							<li><a href="33.html">33</a></li>
+							<li><a href="34.html">34</a></li>
+							<li><a href="35.html">35</a></li>
+							<li><a href="36.html">36</a></li>
+							<li><a href="37.html">37</a></li>
+							<li><a href="38.html">38</a></li>
+							<li><a href="39.html">39</a></li>
+							<li><a href="40.html">40</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://github.com/BlankCat" class="icon fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+					<div id="main">
+							<article class="post featured">
+								<p>15-synchronized-reentrantlock-区别 synchronized 和 ReentrantLock 有什么区别？有人说 synchronized 最慢，这话靠谱吗？ 你用过ReentrantLock里的那些方法，解决什么问题？</p>
+<p>JCIP java 并发书籍 公平锁和非公平锁</p>
+<p>可重入锁ReentrantLock 使用AQS的condition可以实现设置多个等待队列 AQS和Condition AbstractQueuedSynchronizer又称为队列同步器(后面简称AQS)， Condition java.util.concurrent.locks.Condition Condition接口主要是用来对持有锁的线程进行同步控制 Condition.await() == Object.wait() Condition.signal() == Object.notify() Condition.signalAll() == Object.notifyAll()</p>
+<p>ReentrantLock是Lock的实现类，是一个互斥的同步器，在多线程高竞争条件下， ReentrantLock比synchronized有更加优异的性能表现。 1 用法比较 Lock使用起来比较灵活，但是必须有释放锁的配合动作 Lock必须手动获取与释放锁，而synchronized不需要手动释放和开启锁 Lock只适用于代码块锁，而synchronized可用于修饰方法、代码块等 2 特性比较 ReentrantLock的优势体现在： 具备尝试非阻塞地获取锁的特性： 当前线程尝试获取锁，如果这一时刻锁没有被其他线程获取到，则成功获取并持有锁 能被中断地获取锁的特性： 与synchronized不同，获取到锁的线程能够响应中断， 当获取到锁的线程被中断时，中断异常将会被抛出，同时锁会被释放 超时获取锁的特性： 在指定的时间范围内获取锁；如果截止时间到了仍然无法获取锁，则返回</p>
+<p>3 注意事项 在使用ReentrantLock类的时，一定要注意三点： 在finally中释放锁，目的是保证在获取锁之后，最终能够被释放 不要将获取锁的过程写在try块内，因为如果在获取锁时发生了异常，异常抛出的同时，也会导致锁无故被释放。 ReentrantLock提供了一个newCondition的方法，以便用户在同一锁的情况下可以根据不同的情况执行等待或唤醒的动作。</p>
+<p>java.util.concurrent（简称JUC ）包 一直在研究JUC方面的。所有的Lock都是基于AQS来实现了。 AQS和Condition各自维护了不同的队列， 在使用lock和condition的时候，其实就是两个队列的互相移动。 如果我们想自定义一个同步器，可以实现AQS。 它提供了获取共享锁和互斥锁的方式，都是基于对state操作而言的。 ReentranLock这个是可重入的。其实要弄明白它为啥可重入的呢，咋实现的呢。 其实它内部自定义了同步器Sync，这个又实现了AQS，同时又实现了AOS， 而后者就提供了一种互斥锁持有的方式。其实就是每次获取锁的时候， 看下当前维护的那个线程和当前请求的线程是否一样，一样就可重入了。 回复 正解</p>
+<p>ReentrantLock 加锁的时候通过cas算法，将线程对象放到一个双向链表中， 然后每次取出链表中的头节点，看这个节点是否和当前线程相等。 是否相等比较的是线程的ID。 老师我理解的对不对啊？ 回复 嗯，并发库里都是靠自己的synchronizer</p>
+<p>synchronized在低竞争场景下可能优于retrantlock，这里的什么程度算是低竞争场景呢？ 回复 这个精确的标准我还真不知道，我觉得可以这么理解：如果大部分情况， 每个线程都不需要真的获取锁，就是低竞争； 反之，大部分都要获取锁才能正常工作，就是高竞争</p>
+<p>我用过读写分离锁，读锁保证速度， 写锁保证安全问题。 再入锁还是挺好用的。老师写的很棒，学到不少知识。感谢 回复 非常感谢</p>
+<p>在spring中 如果标注一个方法的事务隔离级别为序列化 而数据库的隔离级别是默认的隔离级别 此时此方法中的更新 插入语句是如何执行的？能保证并发不出错吗</p>
+<p>老师这里说的低并发和高并发的场景，大致什么数量级的算低并发？我们做管理系统中用到锁的情况基本都算低并发吧 回复 还真不知道有没有具体标准，但从逻辑上， 低业务量不一定是“低竞争”， 可能因为程序设计原因变成了“高竞争”</p>
+<p>希望后面能讲下lock源码整个的设计思想。</p>
+<p>老师sychronized应该也是再去锁吧？只是不能实现公平性 回复 语义一致，差别不止公平性，例如synchronized不能中断</p>
+<p>ReentrantLock是Lock的实现类，是一个互斥的同步器， 在多线程高竞争条件下，ReentrantLock比synchronized有更加优异的性能表现。</p>
+<p>JMM(Java 内存模型) 老师，jmm什么时候将工作内存的值写入到主内存中呢？ 回复 volatile读写、同步块这种</p>
+<p>所有的Lock都是基于AQS来实现了。 AQS和Condition各自维护了不同的队列，在使用lock和condition的时候， 其实就是两个队列的互相移动。 如果我们想自定义一个同步器，可以实现AQS。 它提供了获取共享锁和互斥锁的方式，都是基于对state操作而言的。</p>
+<p>ReentranLock为什么是可重入？ ReentranLock这个是可重入的。其实要弄明白它为啥可重入的呢，咋实现的呢。 其实它内部自定义了同步器Sync，这个又实现了AQS，同时又实现了AOS， 而后者就提供了一种互斥锁持有的方式。 可重入锁的使用方式？ 其实就是每次获取锁的时候，看下当前维护的那个线程和当前请求的线程是否一样，一样就可重入了。 杨老师，我一直是这样用rerentlock的，在使用的类中定义一个static的rerentlock， 然后哪个方法中需要用到再 try 中 xx.lock,然后finally中xx.unlock。这样用有没有问题？</p>
+<p>之前有被问到synchronize和ReetrantLock底层实现上的区别， 笼统的答了下前者是基于JVM实现的， 后者依赖于CPU底层指令的实现，关于这个，请问有更详细的解答吗？ 回复 synchronized已经介绍了，后面我会介绍AQS， reentrantlock等多种同步结构都是利用它实现的； 其实你说的靠计算机之类也对，我想你的意思是cas的实现？</p>
+<p>锁是针对数据的，不是针对代码，一个数据一把锁，syncrise似乎违背了这一原则</p>
+<p>看完还是觉得c++11的Lockguard比较优雅，难怪耗子哥说学习java是为了更好的用c++ 回复 互相影响，底层也有很多一致的地方，类似jmm之类也是c++掉的坑，别人吸取了教训</p>
+<p>杨老师，问个问题，看网上有说Condition的await和signal方法， 等同于Object的wait和notify，看了一下源码，没有直接的关系。 ReentractLock是基于双向链表的对接和CAS实现的， 感觉比Object增加了很多逻辑，怎么会比Synchronized效率高？有疑惑。 回复 你看到的很对，如果从单个线程做的事来看，也许并没有优势， 不管是空间还是时间， 但ReentrantLock这种所谓cas， 或者叫lock-free，方式的好处， 在于高竞争情况的扩展性， 而原来那种频繁的上下文切换则会导致吞吐量迅速下降</p>
+<p>补充一点，Syc的静态方法和syc(.class)确实是一样的， 但是前者是在方法前加syc的flag， 后者在反编译后的代码中看不到。 所以我查阅了hotspot的文档和代码， 确定这一个细节处理是有jvm做的。两者实际运行，确实是一样的处理。 回复 对，字节码不一样，但语义是一样</p>
+<p>老师，怎么判断一个队列是有界或无界，arrayblockingqueue是有界 回复 这个每个queue的javadoc都明确说明了，有什么疑问？</p>
+<p>真不记得自己用过，诚如老师所讲，其有特殊语义能力， 如超时，公平性等，但窃以为别给自己添乱最好， 万一忘了unlock，话说他这玩意儿为啥不设计个类似try…with…resource的语法糖？ 估计就是为了把加锁解锁的语法能力分散在不同子例程里撰写使用的考虑？ 可问题是如果都写成那样了，是否有说明自己程序设计上内聚性不够呢？ 嗯，再看点源码来找答案吧…话说JCIP真是好书，学不学究的读读资本论之后就释然了， 如果真能顺着它仔细读下来，发现它针对特定栗子还会随着内容深入给出不同解法，不禁感叹， 也许在利用较低级别的通信原语时，很有可能是对并发包里面一些现成工具类 缺乏了解或者是对真正的并发问题缺乏深入理解造成的…虽然自己看起来也就是个CRUD开发的老佃户命了， 还是非常期待老师后面的主题，毕竟咱还是有颗通向地主阶层的心 回复 有些场景，就类似blockingQueue，用sync表达要吃力些，甚至有时候是表达不出来的</p>
+<p>从书写角度： reentrantlock 需要手动获取和释放锁，而syncgeonised不需要手动获取和释放 所以，此外， reentrantlock有trylock 和lockinterruptly ，所以对锁的操作更灵活。 从功能的角度看， reentrantlock支持公平锁和非公平锁 而synchronized 仅支持非公平锁。</p>
+<p>在大部分并发编程资料都是将ReentrantLock翻译为“重入锁”。</p>
+<p>ReentranLock相比Synchronized，可以实现更多的锁细节。 超时的锁获取 可以判断是否有线程在等待锁 可以响应中断请求</p>
+<p>signal和await和notify wait有啥区别呢？ 还有lock方式放入双向链表中的node， 是不是按照线程对象（对象地址）进行比较的啊？ 就是如何判断当前线程是否获得锁是不是按照线程对象地址啊 回复 有点类似；使用并发库， 大部分情况下不再需要调用Object的nitify wait之类， 简化了很多；</p>
+
+								
+							</article>
+
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
